@@ -1,6 +1,6 @@
 # GitHub Action: Surefire Report
 
-[![build](https://github.com/scacap-labs/action-surefire-report-v2/actions/workflows/build.yml/badge.svg)](https://github.com/scacap-labs/action-surefire-report-v2/actions/workflows/build.yml)
+[![build](https://github.com/ScalableCapital/action-surefire-report/actions/workflows/build.yml/badge.svg)](https://github.com/ScalableCapital/action-surefire-report/actions/workflows/build.yml)
 
 > [!IMPORTANT]
 > Version 2 is the active release line for this action.

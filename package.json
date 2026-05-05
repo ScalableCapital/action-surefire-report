@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "packageManager": "pnpm@10.33.0",
   "main": "lib/index.js",
-  "homepage": "https://github.com/ScaCap/action-surefire-report#readme",
+  "homepage": "https://github.com/ScalableCapital/action-surefire-report#readme",
   "scripts": {
     "eslint": "eslint .",
     "build:ts": "tsc -p tsconfig.json",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ScaCap/action-surefire-report"
+    "url": "git+https://github.com/ScalableCapital/action-surefire-report"
   },
   "keywords": [
     "GitHub",
@@ -29,7 +29,7 @@
     "node": ">=24.0.0"
   },
   "bugs": {
-    "url": "https://github.com/ScaCap/action-surefire-report/issues"
+    "url": "https://github.com/ScalableCapital/action-surefire-report/issues"
   },
   "dependencies": {
     "@actions/core": "3.0.1",
