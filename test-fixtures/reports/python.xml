@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="pytest" tests="3" failures="2" errors="0" skipped="0">
+    <testcase classname="test_sample" name="test_passes" file="test_sample.py" time="0.001" />
+    <testcase classname="test_sample" name="test_which_fails" file="test_sample.py" time="0.001">
+      <failure message="AssertionError: assert 'test' == 'xyz'&#10;  - xyz&#10;  + test"><![CDATA[def test_which_fails():
+        event = { 'attr': 'test'}
+>       assert event['attr'] == 'xyz'
+E       AssertionError: assert 'test' == 'xyz'
+E         - xyz
+E         + test
+
+integration-tests/python/test_sample.py:10: AssertionError]]></failure>
+    </testcase>
+    <testcase classname="test_sample" name="test_with_error" file="test_sample.py" time="0.001">
+      <error message="AttributeError: 'dict' object has no attribute 'attr'"><![CDATA[def test_with_error():
+        event = { 'attr': 'test'}
+>       assert event.attr == 'test'
+E       AttributeError: 'dict' object has no attribute 'attr'
+
+integration-tests/python/test_sample.py:14: AttributeError]]></error>
+    </testcase>
+  </testsuite>
+</testsuites>

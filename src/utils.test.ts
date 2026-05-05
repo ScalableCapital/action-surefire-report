@@ -1,4 +1,6 @@
-const { resolveFileAndLine, resolvePath, parseFile } = require('./utils');
+import { describe, expect, it } from 'vitest';
+
+import { parseFile, resolveFileAndLine, resolvePath } from './utils';
 
 describe('resolveFileAndLine', () => {
     it('should default to 1 if no line found', () => {
@@ -16,7 +18,7 @@ action.surefire.report.email.InvalidEmailAddressException: Invalid email address
     at action.surefire.report.email.EmailAddressTest.expectException(EmailAddressTest.java:74)
     at action.surefire.report.email.EmailAddressTest.shouldNotContainInternationalizedHostNames(EmailAddressTest.java:39)
         `,
-            false,
+            false
         );
         expect(filename).toBe('EmailAddressTest');
         expect(line).toBe(39);
@@ -34,7 +36,7 @@ Caused by: java.lang.IllegalArgumentException: Amount must have max 2 non-zero d
     at action.surefire.report.calc.CalcUtilsTest.access$scale(CalcUtilsTest.kt:9)
     at action.surefire.report.calc.CalcUtilsTest.test error handling(CalcUtilsTest.kt:27)
         `,
-            false,
+            false
         );
         expect(filename).toBe('CalcUtilsTest');
         expect(line).toBe(27);
@@ -58,7 +60,7 @@ Stacktrace was: java.lang.IllegalArgumentException: Input='' didn't match condit
 	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
 `,
-            false,
+            false
         );
         expect(filename).toBe('StringUtilsTest');
         expect(line).toBe(26);
@@ -84,11 +86,11 @@ test.py:14: AttributeError
     });
 
     it('should parse correctly filename and line for a Go file when filename is in stack trace', () => {
-        const {filename, line} = resolveFileAndLine(
+        const { filename, line } = resolveFileAndLine(
             null,
             'com/ScaCap/action-surefire-report',
             'main_test.go:8: failing test',
-            true,
+            true
         );
         expect(filename).toBe('main_test.go');
         expect(line).toBe(8);
@@ -116,9 +118,7 @@ describe('resolvePath', () => {
 
 describe('parseFile', () => {
     it('should parse CalcUtils results', async () => {
-        const { count, skipped, annotations } = await parseFile(
-            'integration-tests/maven/utils/target/surefire-reports/TEST-action.surefire.report.calc.CalcUtilsTest.xml'
-        );
+        const { count, skipped, annotations } = await parseFile('test-fixtures/reports/calc-utils.xml');
 
         expect(count).toBe(2);
         expect(skipped).toBe(0);
@@ -148,8 +148,9 @@ describe('parseFile', () => {
             }
         ]);
     });
+
     it('should parse pytest results', async () => {
-        const { count, skipped, annotations } = await parseFile('integration-tests/python/report.xml');
+        const { count, skipped, annotations } = await parseFile('test-fixtures/reports/python.xml');
 
         expect(count).toBe(3);
         expect(skipped).toBe(0);
@@ -161,7 +162,7 @@ describe('parseFile', () => {
                 start_column: 0,
                 end_column: 0,
                 annotation_level: 'failure',
-                title: 'test_sample.test_which_fails',
+                title: 'test_sample.py.test_which_fails',
                 message: "AssertionError: assert 'test' == 'xyz'\n  - xyz\n  + test",
                 raw_details:
                     "def test_which_fails():\n        event = { 'attr': 'test'}\n>       assert event['attr'] == 'xyz'\nE       AssertionError: assert 'test' == 'xyz'\nE         - xyz\nE         + test\n\nintegration-tests/python/test_sample.py:10: AssertionError"
@@ -173,19 +174,19 @@ describe('parseFile', () => {
                 start_column: 0,
                 end_column: 0,
                 annotation_level: 'failure',
-                title: 'test_sample.test_with_error',
+                title: 'test_sample.py.test_with_error',
                 message: "AttributeError: 'dict' object has no attribute 'attr'",
                 raw_details:
                     "def test_with_error():\n        event = { 'attr': 'test'}\n>       assert event.attr == 'test'\nE       AttributeError: 'dict' object has no attribute 'attr'\n\nintegration-tests/python/test_sample.py:14: AttributeError"
             }
         ]);
     });
+
     it('should parse go results', async () => {
-        const {count, skipped, annotations} = await parseFile('integration-tests/go/report.xml', true);
+        const { count, skipped, annotations } = await parseFile('test-fixtures/reports/go.xml', true);
 
         expect(count).toBe(3);
         expect(skipped).toBe(0);
-        // noinspection RegExpRepeatedSpace
         expect(annotations).toStrictEqual([
             {
                 path: 'integration-tests/go/main_test.go',
@@ -207,7 +208,8 @@ describe('parseFile', () => {
                 annotation_level: 'failure',
                 title: 'string_test.go.TestFailing',
                 message: 'Failed',
-                raw_details: expect.stringMatching(new RegExp(`string_test.go:7: 
+                raw_details: expect.stringMatching(
+                    new RegExp(`string_test.go:7: 
 \\s*Error Trace:.*action-surefire-report/integration-tests/go/utils/string_test.go:7
 \\s*Error:     \\s*Not equal: 
 \\s*expected: "1"
@@ -219,10 +221,42 @@ describe('parseFile', () => {
 \\s*@@ -1 \\+1 @@
 \\s*-1
 \\s*\\+2
-\\s*Test:\\s*TestFailing`))
-            },
+\\s*Test:\\s*TestFailing`)
+                )
+            }
         ]);
     });
+
+    it('should parse gradle success results without annotations', async () => {
+        const { count, skipped, annotations } = await parseFile('test-fixtures/reports/gradle-success.xml');
+
+        expect(count).toBe(2);
+        expect(skipped).toBe(0);
+        expect(annotations).toStrictEqual([]);
+    });
+
+    it('should parse gradle failure results', async () => {
+        const { count, skipped, annotations } = await parseFile('test-fixtures/reports/gradle-failure.xml');
+
+        expect(count).toBe(1);
+        expect(skipped).toBe(0);
+        expect(annotations).toStrictEqual([
+            {
+                path: 'integration-tests/gradle/src/test/java/action/surefire/report/gradle/FailingTest.java',
+                start_line: 10,
+                end_line: 10,
+                start_column: 0,
+                end_column: 0,
+                annotation_level: 'failure',
+                title: 'FailingTest.reportsReadableFailures()',
+                message: 'org.opentest4j.AssertionFailedError: expected: <expected> but was: <actual>',
+                raw_details: expect.stringContaining(
+                    'at action.surefire.report.gradle.FailingTest.reportsReadableFailures(FailingTest.java:10)'
+                )
+            }
+        ]);
+    });
+
     it('should parse custom report with details as an array', async () => {
         const { count, skipped, annotations } = await parseFile(
             'integration-tests/custom_reports/TEST-pro.taskana.common.api.ListUtilTest-H2.xml'
@@ -333,6 +367,47 @@ describe('parseFile', () => {
                 end_column: 0,
                 annotation_level: 'failure',
                 title: 'DocumentUploadIntegrationTest.shouldReturnBadRequestIfDocumentSizeIsZero',
+                message: 'Status expected:<400> but was:<403>',
+                raw_details:
+                    'java.lang.AssertionError: Status expected:<400> but was:<403>\n' +
+                    '\tat test.DocumentUploadIntegrationTest.shouldReturnBadRequestIfDocumentSizeIsZero(DocumentUploadIntegrationTest.java:47)'
+            }
+        ]);
+    });
+
+    it('should ignore flaky failures when requested', async () => {
+        const { count, skipped, annotations } = await parseFile(
+            'integration-tests/custom_reports/TEST-test.MyIntegrationTestSuite.xml',
+            false,
+            true
+        );
+
+        expect(count).toBe(5);
+        expect(skipped).toBe(0);
+        expect(annotations).toStrictEqual([
+            {
+                path: 'test/DocumentUploadIntegrationTest',
+                start_line: 33,
+                end_line: 33,
+                start_column: 0,
+                end_column: 0,
+                annotation_level: 'failure',
+                title:
+                    'DocumentUploadIntegrationTest.shouldReturnBadRequestIfDocumentTypeIsInvalid',
+                message: 'Status expected:<400> but was:<403>',
+                raw_details:
+                    'java.lang.AssertionError: Status expected:<400> but was:<403>\n' +
+                    '\tat test.DocumentUploadIntegrationTest.shouldReturnBadRequestIfDocumentTypeIsInvalid(DocumentUploadIntegrationTest.java:33)'
+            },
+            {
+                path: 'test/DocumentUploadIntegrationTest',
+                start_line: 47,
+                end_line: 47,
+                start_column: 0,
+                end_column: 0,
+                annotation_level: 'failure',
+                title:
+                    'DocumentUploadIntegrationTest.shouldReturnBadRequestIfDocumentSizeIsZero',
                 message: 'Status expected:<400> but was:<403>',
                 raw_details:
                     'java.lang.AssertionError: Status expected:<400> but was:<403>\n' +

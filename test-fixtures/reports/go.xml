@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="go" tests="3" failures="2" errors="0" skipped="0">
+    <testcase classname="main_test.go" name="TestFailing" time="0.001">
+      <failure message="Failed"><![CDATA[main_test.go:12: failing test]]></failure>
+    </testcase>
+    <testcase classname="string_test.go" name="TestFailing" time="0.001">
+      <failure message="Failed"><![CDATA[string_test.go:7: 
+        	Error Trace:	/Users/ghaiszaher/.codex/worktrees/1e4c/action-surefire-report/integration-tests/go/utils/string_test.go:7
+        	Error:      	Not equal: 
+        	            	expected: "1"
+        	            	actual  : "2"
+        	            	
+        	            	Diff:
+        	            	--- Expected
+        	            	+++ Actual
+        	            	@@ -1 +1 @@
+        	            	-1
+        	            	+2
+        	Test:       	TestFailing]]></failure>
+    </testcase>
+    <testcase classname="main_test.go" name="TestPassing" time="0.001" />
+  </testsuite>
+</testsuites>

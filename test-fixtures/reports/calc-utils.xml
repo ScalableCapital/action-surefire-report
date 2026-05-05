@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="action.surefire.report.calc.CalcUtilsTest" tests="2" failures="2" errors="0" skipped="0">
+  <testcase classname="action.surefire.report.calc.CalcUtilsTest" name="test error handling" time="0.001">
+    <failure message="unexpected exception type thrown; expected:&lt;java.lang.IllegalStateException&gt; but was:&lt;java.lang.IllegalArgumentException&gt;"><![CDATA[java.lang.AssertionError: unexpected exception type thrown; expected:<java.lang.IllegalStateException> but was:<java.lang.IllegalArgumentException>
+	at action.surefire.report.calc.CalcUtilsTest.test error handling(CalcUtilsTest.kt:27)
+Caused by: java.lang.IllegalArgumentException: Amount must have max 2 non-zero decimal places
+	at action.surefire.report.calc.CalcUtilsTest.scale(CalcUtilsTest.kt:31)
+	at action.surefire.report.calc.CalcUtilsTest.access$scale(CalcUtilsTest.kt:9)
+	at action.surefire.report.calc.CalcUtilsTest.test error handling(CalcUtilsTest.kt:27)]]></failure>
+  </testcase>
+  <testcase classname="action.surefire.report.calc.CalcUtilsTest" name="test scale" time="0.001">
+    <failure message="Expected: &lt;100.10&gt;&#10;     but: was &lt;100.11&gt;"><![CDATA[java.lang.AssertionError: 
+
+Expected: <100.10>
+     but: was <100.11>
+	at action.surefire.report.calc.CalcUtilsTest.test scale(CalcUtilsTest.kt:15)]]></failure>
+  </testcase>
+</testsuite>

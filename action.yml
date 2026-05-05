@@ -1,19 +1,23 @@
-name: 'Surefire Report'
+name: 'Surefire Test Report'
 description: 'Report Surefire test results as annotations on Github Pull Request [junit, failsafe]'
 branding:
-  icon: 'check-square'
+  icon: 'check-circle'
   color: 'green'
 inputs:
   github_token:
     description: 'GITHUB_TOKEN'
-    required: true
+    required: false
     default: ${{ github.token }}
   report_paths:
     description: 'surefire/failsafe/junit compatible xml report paths in glob format'
     required: false
     default: '**/surefire-reports/TEST-*.xml, **/failsafe-reports/TEST-*.xml'
+  report_mode:
+    description: 'report publishing mode: auto keeps check runs for PR/push flows and uses workflow annotations for workflow_dispatch/schedule; set check-run or workflow to override'
+    required: false
+    default: 'auto'
   create_check:
-    description: 'create a new check with annotations'
+    description: 'create a new check with annotations when report_mode resolves to check-run'
     required: false
     default: 'true'
   check_name:
@@ -45,6 +49,10 @@ inputs:
     default: 'false'
   github_base_url:
     description: 'if you use Github Enterprise, you can set this to the URL of your server (e.g. https://github.myorg.com/api/v3)'
+    required: false
+    default: ""
+  custom_summary:
+    description: 'optional custom summary text to display in the published check output'
     required: false
     default: ""
 

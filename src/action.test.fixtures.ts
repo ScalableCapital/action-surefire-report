@@ -1,4 +1,4 @@
-const finishedWithFailures = {
+export const finishedWithFailures = {
     name: 'Test Report',
     head_sha: 'sha123',
     status: 'completed',
@@ -121,7 +121,7 @@ const finishedWithFailures = {
                 annotation_level: 'failure',
                 title: 'AllOkWithFlakesTest.firstTryFailSecondTrySuccess',
                 message: 'firstTryFailSecondTrySuccess',
-                raw_details: ""
+                raw_details: ''
             },
             {
                 path: 'integration-tests/maven/utils/src/test/java/action/surefire/report/calc/CalcUtilsTest.kt',
@@ -176,9 +176,9 @@ const finishedWithFailures = {
             }
         ]
     }
-};
+} as const;
 
-const finishedSuccess = {
+export const finishedSuccess = {
     name: 'Test Report',
     head_sha: 'sha123',
     status: 'completed',
@@ -188,11 +188,11 @@ const finishedSuccess = {
         summary: '',
         annotations: []
     }
-};
+} as const;
 
-const masterSuccess = {
+export const mainSuccess = {
     name: 'Test Report',
-    head_sha: 'masterSha123',
+    head_sha: 'mainSha123',
     status: 'completed',
     conclusion: 'success',
     output: {
@@ -200,9 +200,9 @@ const masterSuccess = {
         summary: '',
         annotations: []
     }
-};
+} as const;
 
-const nothingFound = {
+export const nothingFound = {
     name: 'Test Report',
     head_sha: 'sha123',
     status: 'completed',
@@ -212,9 +212,9 @@ const nothingFound = {
         summary: '',
         annotations: []
     }
-};
+} as const;
 
-const nothingFoundButSuccess = {
+export const nothingFoundButSuccess = {
     name: 'Test Report',
     head_sha: 'sha123',
     status: 'completed',
@@ -224,12 +224,4 @@ const nothingFoundButSuccess = {
         summary: '',
         annotations: []
     }
-};
-
-module.exports = {
-    finishedWithFailures,
-    finishedSuccess,
-    nothingFound,
-    nothingFoundButSuccess,
-    masterSuccess
-};
+} as const;

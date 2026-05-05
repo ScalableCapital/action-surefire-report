@@ -9,13 +9,12 @@ const compat = new FlatCompat({
 });
 
 module.exports = [{
-    ignores: ['dist/*'],
+    ignores: ['dist/*', 'lib/*'],
 }, ...compat.extends('eslint:recommended'), {
     languageOptions: {
         globals: {
             ...globals.commonjs,
             ...globals.node,
-            ...globals.jest,
             Atomics: 'readonly',
             SharedArrayBuffer: 'readonly',
         },
