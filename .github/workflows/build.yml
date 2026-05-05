@@ -3,61 +3,282 @@ on:
   pull_request:
   push:
     branches:
-      - master
+      - main
 
 concurrency:
-  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
   group: ${{ github.ref }}
 
 jobs:
-  build:
+  validate:
+    name: Validate
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      checks: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@8912a9102ac27614460f54aedde9e1e7f9aec20d # v6.0.5
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: pnpm
+      - run: pnpm dlx @aikidosec/safe-chain@1.1.9 setup-ci
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run eslint
+      - run: pnpm run typecheck
+      - run: pnpm run test
+      - run: pnpm run package
+      - name: Verify packaged dist is committed
+        shell: bash
+        run: |
+          if ! git -c core.autocrlf=false diff --ignore-cr-at-eol --exit-code dist/index.js; then
+            echo "::error::dist/ is out of date. Run 'pnpm run package' and commit the result."
+            exit 1
+          fi
+
+  integration_maven:
+    name: Integration / Maven
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@8912a9102ac27614460f54aedde9e1e7f9aec20d # v6.0.5
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: pnpm
+      - run: pnpm dlx @aikidosec/safe-chain@1.1.9 setup-ci
+      - run: pnpm install --frozen-lockfile
       - uses: actions/setup-java@v5
         with:
           java-version: 8
           distribution: 'temurin'
           cache: 'maven'
-      - run: cd integration-tests/maven && mvn clean verify --batch-mode -Dmaven.test.failure.ignore=true
-      - uses: ./
-        if: github.ref != 'refs/heads/master'
+      - name: Run failing Maven example
+        id: maven_tests
+        continue-on-error: true
+        run: cd integration-tests/maven && mvn clean verify --batch-mode --fail-at-end
+      - name: Publish Maven report on same-repo PRs
+        id: maven_report
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        uses: ./
         with:
           check_name: Example Surefire Test Report
           report_paths: '**/surefire-reports/*.xml, **/failsafe-reports/*.xml'
-      - uses: cclauss/GitHub-Action-for-pytest@0.5.0
+      - name: Publish Maven report as workflow annotations on fork PRs
+        id: maven_report_fork
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
+        uses: ./
         with:
-          args: pytest integration-tests/python/ --junit-xml=integration-tests/python/report.xml || exit 0
-      - uses: ./
-        if: github.ref != 'refs/heads/master'
+          check_name: Example Surefire Test Report
+          report_paths: '**/surefire-reports/*.xml, **/failsafe-reports/*.xml'
+          report_mode: workflow
+      - name: Assert Maven reporter output on same-repo PRs
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        run: test "${{ steps.maven_report.outputs.conclusion }}" = "failure"
+      - name: Assert Maven reporter output on fork PRs
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
+        run: test "${{ steps.maven_report_fork.outputs.conclusion }}" = "failure"
+      - name: Assert Maven check run on same-repo PRs
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        uses: actions/github-script@v9
+        env:
+          CHECK_NAME: Example Surefire Test Report
+          EXPECTED_CONCLUSION: failure
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        with:
+          script: |
+            const assertCheckRun = require('./.github/scripts/assert-check-run');
+            await assertCheckRun({ github, context, env: process.env });
+
+  integration_gradle:
+    name: Integration / Gradle
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@8912a9102ac27614460f54aedde9e1e7f9aec20d # v6.0.5
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: pnpm
+      - run: pnpm dlx @aikidosec/safe-chain@1.1.9 setup-ci
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/setup-java@v5
+        with:
+          java-version: 17
+          distribution: 'temurin'
+          cache: 'gradle'
+      - uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '8.10'
+      - name: Run passing Gradle example
+        id: gradle_tests
+        run: cd integration-tests/gradle && gradle clean test --tests action.surefire.report.gradle.PassingTest
+      - name: Publish Gradle report on same-repo PRs
+        id: gradle_report
+        if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        uses: ./
+        with:
+          check_name: Example Gradle Report
+          report_paths: integration-tests/gradle/build/test-results/test/TEST-*.xml
+      - name: Publish Gradle report as workflow annotations on fork PRs
+        id: gradle_report_fork
+        if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
+        uses: ./
+        with:
+          check_name: Example Gradle Report
+          report_paths: integration-tests/gradle/build/test-results/test/TEST-*.xml
+          report_mode: workflow
+      - name: Assert Gradle example succeeded
+        if: ${{ always() }}
+        run: test "${{ steps.gradle_tests.outcome }}" = "success"
+      - name: Assert Gradle reporter output on same-repo PRs
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        run: test "${{ steps.gradle_report.outputs.conclusion }}" = "success"
+      - name: Assert Gradle reporter output on fork PRs
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
+        run: test "${{ steps.gradle_report_fork.outputs.conclusion }}" = "success"
+      - name: Assert Gradle check run on same-repo PRs
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        uses: actions/github-script@v9
+        env:
+          CHECK_NAME: Example Gradle Report
+          EXPECTED_CONCLUSION: success
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        with:
+          script: |
+            const assertCheckRun = require('./.github/scripts/assert-check-run');
+            await assertCheckRun({ github, context, env: process.env });
+
+  integration_python:
+    name: Integration / Pytest
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@8912a9102ac27614460f54aedde9e1e7f9aec20d # v6.0.5
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: pnpm
+      - run: pnpm dlx @aikidosec/safe-chain@1.1.9 setup-ci
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+      - run: python -m pip install pytest
+      - name: Run failing Pytest example
+        id: pytest_tests
+        continue-on-error: true
+        run: pytest integration-tests/python/ --junit-xml=integration-tests/python/report.xml
+      - name: Publish Pytest report on same-repo PRs
+        id: pytest_report
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        uses: ./
         with:
           check_name: Example Pytest Report
           report_paths: integration-tests/python/report.xml
-      - uses: actions/setup-go@v5
+      - name: Publish Pytest report as workflow annotations on fork PRs
+        id: pytest_report_fork
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
+        uses: ./
+        with:
+          check_name: Example Pytest Report
+          report_paths: integration-tests/python/report.xml
+          report_mode: workflow
+      - name: Assert Pytest reporter output on same-repo PRs
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        run: test "${{ steps.pytest_report.outputs.conclusion }}" = "failure"
+      - name: Assert Pytest reporter output on fork PRs
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
+        run: test "${{ steps.pytest_report_fork.outputs.conclusion }}" = "failure"
+      - name: Assert Pytest example failed
+        if: ${{ always() }}
+        run: test "${{ steps.pytest_tests.outcome }}" = "failure"
+      - name: Assert Pytest check run on same-repo PRs
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        uses: actions/github-script@v9
+        env:
+          CHECK_NAME: Example Pytest Report
+          EXPECTED_CONCLUSION: failure
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        with:
+          script: |
+            const assertCheckRun = require('./.github/scripts/assert-check-run');
+            await assertCheckRun({ github, context, env: process.env });
+
+  integration_go:
+    name: Integration / Go
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@8912a9102ac27614460f54aedde9e1e7f9aec20d # v6.0.5
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: pnpm
+      - run: pnpm dlx @aikidosec/safe-chain@1.1.9 setup-ci
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/setup-go@v6
         with:
           go-version: 1.21.x
-      - run: |
-          cd integration-tests/go && 
-            go install github.com/jstemmer/go-junit-report/v2@latest &&
-            go test -v 2>&1 ./... |
-            go-junit-report -out report.xml
-      - uses: ./
-        if: github.ref != 'refs/heads/master'
+      - name: Run failing Go example
+        id: go_tests
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          cd integration-tests/go
+          go install github.com/jstemmer/go-junit-report/v2@latest
+          go test -v 2>&1 ./... | go-junit-report -out report.xml
+      - name: Publish Go report on same-repo PRs
+        id: go_report
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        uses: ./
         with:
           check_name: Example Go Report
           report_paths: integration-tests/go/report.xml
           file_name_in_stack_trace: true
-      - uses: actions/setup-node@v4
+      - name: Publish Go report as workflow annotations on fork PRs
+        id: go_report_fork
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
+        uses: ./
         with:
-          node-version: 24
-          cache: npm
-      - shell: bash
-        run: |
-          npm install -g @aikidosec/safe-chain@1.1.9 --engine-strict
-          safe-chain setup-ci
-      - run: npm install
-      - run: npm run eslint
-      - run: npm run test
+          check_name: Example Go Report
+          report_paths: integration-tests/go/report.xml
+          file_name_in_stack_trace: true
+          report_mode: workflow
+      - name: Assert Go reporter output on same-repo PRs
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        run: test "${{ steps.go_report.outputs.conclusion }}" = "failure"
+      - name: Assert Go reporter output on fork PRs
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
+        run: test "${{ steps.go_report_fork.outputs.conclusion }}" = "failure"
+      - name: Assert Go example failed
+        if: ${{ always() }}
+        run: test "${{ steps.go_tests.outcome }}" = "failure"
+      - name: Assert Go check run on same-repo PRs
+        if: ${{ always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        uses: actions/github-script@v9
+        env:
+          CHECK_NAME: Example Go Report
+          EXPECTED_CONCLUSION: failure
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        with:
+          script: |
+            const assertCheckRun = require('./.github/scripts/assert-check-run');
+            await assertCheckRun({ github, context, env: process.env });
