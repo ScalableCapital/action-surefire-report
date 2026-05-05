@@ -1,0 +1,59 @@
+name: issue triage
+
+on:
+  issues:
+    types:
+      - opened
+      - reopened
+
+concurrency:
+  cancel-in-progress: true
+  group: issue-triage-${{ github.event.issue.number }}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  triage:
+    name: Apply triage label
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/github-script@v9
+        with:
+          #language=javascript
+          script: |
+            const syncLabels = require('./.github/scripts/sync-labels');
+            await syncLabels({ github, context });
+
+            const labels = (context.payload.issue.labels || []).map(label =>
+              typeof label === 'string' ? label : label.name
+            );
+            const labelsToAdd = [];
+
+            if (!labels.includes('triage')) {
+              labelsToAdd.push('triage');
+            }
+
+            if (context.payload.action === 'reopened' && labels.includes('stale')) {
+              try {
+                await github.rest.issues.removeLabel({
+                  ...context.repo,
+                  issue_number: context.payload.issue.number,
+                  name: 'stale'
+                });
+              } catch (error) {
+                if (error.status !== 404) {
+                  throw error;
+                }
+              }
+            }
+
+            if (labelsToAdd.length > 0) {
+              await github.rest.issues.addLabels({
+                ...context.repo,
+                issue_number: context.payload.issue.number,
+                labels: labelsToAdd
+              });
+            }

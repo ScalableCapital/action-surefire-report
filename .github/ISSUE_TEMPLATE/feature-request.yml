@@ -1,0 +1,86 @@
+name: Feature request
+description: Propose an improvement to action behavior, workflow ergonomics, or supported report flows.
+title: '[Feature]: '
+labels:
+  - enhancement
+  - triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Focus on the user problem first. If the request is tied to a specific report producer or workflow shape, include that detail up front.
+  - type: input
+    id: action-version
+    attributes:
+      label: Current action version
+      description: Which version are you using today?
+      placeholder: ScalableCapital/action-surefire-report@v2
+    validations:
+      required: true
+  - type: dropdown
+    id: runner-environment
+    attributes:
+      label: Runner environment
+      description: Where would this feature be used?
+      options:
+        - GitHub-hosted Linux runner
+        - GitHub-hosted macOS runner
+        - GitHub-hosted Windows runner
+        - Self-hosted runner
+        - Containerized runner
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: report-type
+    attributes:
+      label: Report type
+      description: Which report producers would benefit from this?
+      multiple: true
+      options:
+        - Maven Surefire
+        - Maven Failsafe
+        - Gradle
+        - Pytest
+        - Go test
+        - Generic JUnit XML
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What pain point or limitation are you trying to solve?
+      placeholder: Fork PR workflows cannot rely on check-run creation in our environment.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-behavior
+    attributes:
+      label: Proposed behavior
+      description: Describe the desired outcome, not only the implementation idea.
+    validations:
+      required: true
+  - type: textarea
+    id: current-workaround
+    attributes:
+      label: Current workaround
+      description: What do you do today to manage without this feature?
+    validations:
+      required: false
+  - type: textarea
+    id: example-workflow
+    attributes:
+      label: Example workflow or usage
+      description: Add a representative workflow snippet or XML excerpt if it clarifies the request.
+      render: yaml
+    validations:
+      required: false
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Related issues, rollout constraints, or compatibility notes.
+    validations:
+      required: false

@@ -1,0 +1,86 @@
+name: Support question
+description: Ask for help using the action or understanding published output.
+title: '[Question]: '
+labels:
+  - question
+  - triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Support questions are easier to answer when they include the exact action version, workflow event, and a short XML or log excerpt.
+  - type: input
+    id: action-version
+    attributes:
+      label: Action version
+      description: Which action reference are you using?
+      placeholder: ScalableCapital/action-surefire-report@v2
+    validations:
+      required: true
+  - type: dropdown
+    id: runner-environment
+    attributes:
+      label: Runner environment
+      description: Where does your workflow run?
+      options:
+        - GitHub-hosted Linux runner
+        - GitHub-hosted macOS runner
+        - GitHub-hosted Windows runner
+        - Self-hosted runner
+        - Containerized runner
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: report-type
+    attributes:
+      label: Report type
+      description: Which report producer are you working with?
+      multiple: true
+      options:
+        - Maven Surefire
+        - Maven Failsafe
+        - Gradle
+        - Pytest
+        - Go test
+        - Generic JUnit XML
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: What are you trying to accomplish?
+      description: Describe the workflow outcome you want.
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What is unclear or not working as expected?
+    validations:
+      required: true
+  - type: textarea
+    id: workflow-snippet
+    attributes:
+      label: Workflow snippet
+      description: Include the relevant workflow YAML or command snippet.
+      render: yaml
+    validations:
+      required: false
+  - type: textarea
+    id: xml-or-log-excerpt
+    attributes:
+      label: Relevant XML or log excerpt
+      description: Paste sanitized output that would help maintainers answer the question.
+      render: text
+    validations:
+      required: false
+  - type: textarea
+    id: attempted-troubleshooting
+    attributes:
+      label: What have you already tried?
+      description: Mention changes you already tested or docs you already read.
+    validations:
+      required: false

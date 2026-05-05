@@ -1,0 +1,114 @@
+name: Bug report
+description: Report a reproducible problem in the action runtime or published output.
+title: '[Bug]: '
+labels:
+  - bug
+  - triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Provide the smallest reproducible case you can. Include workflow snippets, report paths, and sanitized XML or log excerpts where possible.
+  - type: input
+    id: action-version
+    attributes:
+      label: Action version
+      description: Which action reference are you using?
+      placeholder: ScalableCapital/action-surefire-report@v2
+    validations:
+      required: true
+  - type: dropdown
+    id: runner-environment
+    attributes:
+      label: Runner environment
+      description: Where does the workflow run?
+      options:
+        - GitHub-hosted Linux runner
+        - GitHub-hosted macOS runner
+        - GitHub-hosted Windows runner
+        - Self-hosted runner
+        - Containerized runner
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: workflow-event
+    attributes:
+      label: Workflow event
+      description: Which trigger exposed the problem?
+      options:
+        - pull_request
+        - push
+        - workflow_dispatch
+        - schedule
+        - workflow_run
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: report-type
+    attributes:
+      label: Report type
+      description: Which report producer is involved?
+      multiple: true
+      options:
+        - Maven Surefire
+        - Maven Failsafe
+        - Gradle
+        - Pytest
+        - Go test
+        - Generic JUnit XML
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: report-mode
+    attributes:
+      label: Report mode
+      description: Which report mode are you using?
+      options:
+        - auto
+        - check-run
+        - workflow
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: What should have happened?
+      placeholder: The action should publish a failing workflow summary with annotations.
+    validations:
+      required: true
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual behavior
+      description: What happened instead?
+      placeholder: The action exited successfully but did not publish any annotations.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Include the relevant workflow YAML, commands, and report paths.
+      render: yaml
+    validations:
+      required: true
+  - type: textarea
+    id: xml-or-log-excerpt
+    attributes:
+      label: Relevant XML or log excerpt
+      description: Paste sanitized snippets that demonstrate the failure.
+      render: text
+    validations:
+      required: false
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Links, screenshots, or related issues.
+    validations:
+      required: false
