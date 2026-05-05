@@ -1,0 +1,59 @@
+name: update release tags
+
+on:
+  release:
+    types:
+      - published
+
+concurrency:
+  cancel-in-progress: false
+  group: update-release-tags-${{ github.event.release.tag_name }}
+
+jobs:
+  update_release_tags:
+    name: Update release compatibility tags
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: refs/tags/${{ github.event.release.tag_name }}
+      - name: Parse release version
+        id: version
+        shell: bash
+        env:
+          TAG_NAME: ${{ github.event.release.tag_name }}
+        #language=bash
+        run: |
+          set -euo pipefail
+          if [[ ! "${TAG_NAME}" =~ ^v([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+            echo "::error::Expected a published release tag in v<major>.<minor>.<patch> format, got '${TAG_NAME}'."
+            exit 1
+          fi
+          echo "major=${BASH_REMATCH[1]}" >> "${GITHUB_OUTPUT}"
+          echo "minor=${BASH_REMATCH[2]}" >> "${GITHUB_OUTPUT}"
+      - uses: pnpm/action-setup@8912a9102ac27614460f54aedde9e1e7f9aec20d # v6.0.5
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run package
+      - name: Verify published tag already contains the packaged artifact
+        shell: bash
+        run: |
+          if ! git -c core.autocrlf=false diff --ignore-cr-at-eol --exit-code dist/index.js; then
+            echo "::error::Published release tag is missing the current packaged dist/ output."
+            echo "::error::The tagged commit must already contain the final bundled artifact before release publication."
+            exit 1
+          fi
+      - name: Move release compatibility tags to the published commit
+        env:
+          MAJOR_TAG: v${{ steps.version.outputs.major }}
+          MINOR_TAG: v${{ steps.version.outputs.major }}.${{ steps.version.outputs.minor }}
+        run: |
+          git tag -f "${MINOR_TAG}"
+          git tag -f "${MAJOR_TAG}"
+          git push origin --force "refs/tags/${MINOR_TAG}" "refs/tags/${MAJOR_TAG}"

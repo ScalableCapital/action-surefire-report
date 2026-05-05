@@ -1,0 +1,116 @@
+name-template: "v$RESOLVED_VERSION"
+tag-template: "v$RESOLVED_VERSION"
+change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
+change-title-escapes: '\<*_&'
+commitish: main
+filter-by-commitish: true
+categories:
+  - title: Breaking Changes
+    labels:
+      - breaking
+      - release:major
+  - title: Features
+    labels:
+      - enhancement
+      - release:minor
+  - title: Fixes
+    labels:
+      - bug
+      - release:patch
+  - title: Security And Guardrails
+    labels:
+      - security
+  - title: Documentation
+    labels:
+      - documentation
+  - title: Dependencies
+    labels:
+      - dependencies
+    collapse-after: 10
+version-resolver:
+  major:
+    labels:
+      - breaking
+      - release:major
+  minor:
+    labels:
+      - enhancement
+      - release:minor
+  patch:
+    labels:
+      - bug
+      - documentation
+      - dependencies
+      - security
+      - release:patch
+  default: patch
+autolabeler:
+  - label: documentation
+    files:
+      - "**/*.md"
+    branch:
+      - '/^(docs|documentation)\/.+/'
+    title:
+      - '/^(docs|documentation)(\(.+\))?:/i'
+      - '/documentation/i'
+  - label: release:major
+    title:
+      - '/major/i'
+    branch:
+      - '/^major\/.+/'
+  - label: breaking
+    title:
+      - '/^.+!:/'
+      - '/breaking/i'
+    body:
+      - '/breaking change/i'
+    branch:
+      - '/^breaking\/.+/'
+  - label: bug
+    branch:
+      - '/^fix\/.+/'
+    title:
+      - '/^(fix|bug)(\(.+\))?:/i'
+      - '/bug/i'
+  - label: release:patch
+    branch:
+      - '/^(patch|chore|refactor|perf|test|build|ci|style|revert)\/.+/'
+    title:
+      - '/^(chore|refactor|perf|test|build|ci|style|revert)(\(.+\))?:/i'
+      - '/patch/i'
+  - label: enhancement
+    branch:
+      - '/^(feat|feature)\/.+/'
+    title:
+      - '/^(feat|feature)(\(.+\))?:/i'
+      - '/enhancement/i'
+  - label: release:minor
+    branch:
+      - '/^minor\/.+/'
+    title:
+      - '/minor/i'
+  - label: dependencies
+    files:
+      - package.json
+      - pnpm-lock.yaml
+      - .github/dependabot.yml
+    branch:
+      - '/^dependabot\/.+/'
+    title:
+      - '/dependenc/i'
+      - '/deps/i'
+      - '/bump/i'
+  - label: security
+    branch:
+      - '/^security\/.+/'
+    title:
+      - '/security/i'
+      - '/guardrail/i'
+      - '/non-prod/i'
+      - '/production/i'
+template: |
+  ## Changes
+
+  $CHANGES
+
+  **Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION

@@ -1,0 +1,55 @@
+name: release labels
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - edited
+      - labeled
+      - unlabeled
+      - ready_for_review
+
+concurrency:
+  cancel-in-progress: true
+  group: release-labels-${{ github.event.pull_request.number }}
+
+jobs:
+  autolabel:
+    name: Autolabel
+    if: ${{ github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'synchronize' || github.event.action == 'edited' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/github-script@v9
+        with:
+          #language=javascript
+          script: |
+            const syncLabels = require('./.github/scripts/sync-labels');
+            await syncLabels({ github, context });
+      - uses: release-drafter/release-drafter/autolabeler@563bf132657a13ded0b01fcb723c5a58cdd824e2 # v7
+
+  verify_release_label:
+    name: Verify release label
+    needs: autolabel
+    if: ${{ always() && !github.event.pull_request.draft }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/github-script@v9
+        env:
+          RELEASE_LABELS: 'breaking, release:major, enhancement, release:minor, bug, release:patch, documentation, dependencies, security'
+        with:
+          #language=javascript
+          script: |
+            const assertReleaseLabel = require('./.github/scripts/assert-release-label');
+            await assertReleaseLabel({ github, context, env: process.env });

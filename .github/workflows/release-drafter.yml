@@ -1,0 +1,22 @@
+name: release drafter
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  cancel-in-progress: true
+  group: release-drafter-main
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  update_release_draft:
+    name: Update release draft
+    runs-on: ubuntu-latest
+    steps:
+      - uses: release-drafter/release-drafter@563bf132657a13ded0b01fcb723c5a58cdd824e2 # v7
