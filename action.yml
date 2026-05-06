@@ -1,5 +1,5 @@
 name: 'Surefire Test Report'
-description: 'Report Surefire test results as annotations on Github Pull Request [junit, failsafe]'
+description: 'Report Surefire test results as annotations on Github Pull Requests and Workflows [junit, failsafe]'
 branding:
   icon: 'check-circle'
   color: 'green'
