@@ -52,7 +52,7 @@ The release-label workflow tries to apply labels automatically. It fails only if
 
 The repository intentionally does not use body-content issue labeling. Issue forms plus a default `triage` label keep incoming issue state predictable and avoid overfitting labels to partial text matches.
 
-## Issue Intake And Triage
+## Issue Intake and Triage
 
 New issues should come through the GitHub issue forms for:
 

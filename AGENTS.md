@@ -7,7 +7,7 @@
 - Runtime source lives in `src/`. TypeScript compiles to ignored `lib/`, and `@vercel/ncc` bundles `lib/index.js` into the committed `dist/index.js` used by `action.yml`.
 - Keep XML report parsing tolerant at the `xml-js` boundary. Different producers emit different JUnit-like shapes, so avoid overfitting the parser to one schema.
 
-## Build, Test, And Development Commands
+## Build, Test, and Development Commands
 
 - Use the Node version from `.nvmrc` and the pnpm version pinned by `packageManager` in `package.json`.
 - Run commands from the repository root.
@@ -31,7 +31,7 @@ pnpm run package
 
 Run the smallest meaningful check set for the change. For normal source, dependency, or workflow changes, use the full command group above.
 
-## Code And Test Conventions
+## Code and Test Conventions
 
 - Prefer small TypeScript changes that match the existing helper boundaries in `src/action.ts`, `src/utils.ts`, and `src/types.ts`.
 - Keep tests near the source files they validate. Shared XML fixtures belong under `test-fixtures/reports/`; executable integration examples belong under `integration-tests/`.
@@ -39,13 +39,13 @@ Run the smallest meaningful check set for the change. For normal source, depende
 - The action currently emits the `conclusion` output and the workflows assert it. Do not rename outputs casually; check `action.yml`, README examples, tests, and workflows together when touching outputs.
 - Preserve the 50-annotation publishing limit unless the task explicitly changes GitHub check annotation behavior.
 
-## PR And Commit Conventions
+## PR and Commit Conventions
 
 - Prefer Conventional Commit style PR titles and commits: `fix:`, `feat:`, `feat!:`, `docs:`, `chore:`, `test:`, `ci:`, or another clear conventional type.
 - Release labels drive Release Drafter. Ensure each non-draft PR has at least one recognized release or changelog label.
 - Keep changes focused. Do not create commits, push, merge, squash, or move tags unless explicitly asked.
 
-## Constraints And Non-Negotiables
+## Constraints and Non-Negotiables
 
 - Do not weaken, remove, or bypass existing tests without explicit instruction.
 - Do not commit secrets, credentials, local profiles, logs, or temporary reports.
