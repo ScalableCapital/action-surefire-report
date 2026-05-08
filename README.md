@@ -11,7 +11,7 @@ This action processes Maven Surefire, Failsafe, Gradle, Pytest, Go, and other JU
 
 ![Screenshot](./screenshot.png)
 
-## What Is New In v2
+## What's New in v2
 
 - Workflow-native reporting with `report_mode: workflow`, which keeps results on the current workflow run page instead of relying only on a separate check run.
 - Better default behavior for `workflow_dispatch` and `schedule`: `report_mode: auto` now publishes workflow-native annotations and a job summary on those events.
@@ -19,7 +19,7 @@ This action processes Maven Surefire, Failsafe, Gradle, Pytest, Go, and other JU
 - `custom_summary`, which lets follow-up workflows or custom publishing flows override the published markdown summary.
 - Stable migration path: the v2 goal is to preserve the existing action contract where possible while improving reporting behavior and maintainability.
 
-## Migrating From v1
+## Migrating from v1
 
 For most users, the main change is the action reference:
 
@@ -80,7 +80,7 @@ jobs:
 | `github_base_url`          | No       |                                                                  | GitHub Enterprise API URL, for example `https://github.myorg.com/api/v3`.                                                                                |
 | `custom_summary`           | No       |                                                                  | Custom markdown summary text for the published check output, useful when linking report publication back to another workflow or context.                 |
 
-## Tips For Gradle
+## Tips for Gradle
 
 As Gradle uses a different build directory than Maven by default, you might need to set the `report_paths` variable:
 
