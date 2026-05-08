@@ -5,25 +5,25 @@ change-title-escapes: '\<*_&'
 commitish: main
 filter-by-commitish: true
 categories:
-  - title: Breaking Changes
+  - title: "💥 Breaking Changes"
     labels:
       - breaking
       - release:major
-  - title: Features
+  - title: "✨ Features"
     labels:
       - enhancement
       - release:minor
-  - title: Fixes
+  - title: "🐛 Fixes"
     labels:
       - bug
       - release:patch
-  - title: Security And Guardrails
+  - title: "🛡️ Security And Guardrails"
     labels:
       - security
-  - title: Documentation
+  - title: "📝 Documentation"
     labels:
       - documentation
-  - title: Dependencies
+  - title: "📦 Dependencies"
     labels:
       - dependencies
     collapse-after: 10
