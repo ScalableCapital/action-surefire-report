@@ -336,7 +336,7 @@ async function writeStepSummary(
 
 export default async function action(): Promise<void> {
     const inputs = getParsedInputs();
-    core.info(`Going to parse results form ${inputs.reportPaths}`);
+    core.info(`Going to parse results from ${inputs.reportPaths?.split("\n")}`);
 
     const result = await parseTestReports(
         inputs.reportPaths,
