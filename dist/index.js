@@ -1,7 +1,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 7708:
+/***/ 4647:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -55,9 +55,9 @@ exports.getProxyUrl = getProxyUrl;
 exports.isHttps = isHttps;
 const http = __importStar(__nccwpck_require__(8611));
 const https = __importStar(__nccwpck_require__(5692));
-const pm = __importStar(__nccwpck_require__(8188));
-const tunnel = __importStar(__nccwpck_require__(329));
-const undici_1 = __nccwpck_require__(9522);
+const pm = __importStar(__nccwpck_require__(8835));
+const tunnel = __importStar(__nccwpck_require__(1410));
+const undici_1 = __nccwpck_require__(7253);
 var HttpCodes;
 (function (HttpCodes) {
     HttpCodes[HttpCodes["OK"] = 200] = "OK";
@@ -745,7 +745,7 @@ const lowercaseKeys = (obj) => Object.keys(obj).reduce((c, k) => ((c[k.toLowerCa
 
 /***/ }),
 
-/***/ 8188:
+/***/ 8835:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -846,7 +846,7 @@ class DecodedURL extends URL {
 
 /***/ }),
 
-/***/ 9900:
+/***/ 6297:
 /***/ (function(module) {
 
 /**
@@ -2376,7 +2376,7 @@ class DecodedURL extends URL {
 
 /***/ }),
 
-/***/ 7316:
+/***/ 2251:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 ;(function (sax) {
@@ -2575,7 +2575,7 @@ class DecodedURL extends URL {
 
   var Stream
   try {
-    Stream = (__nccwpck_require__(2203).Stream)
+    Stream = (__nccwpck_require__(4584).Stream)
   } catch (ex) {
     Stream = function () {}
   }
@@ -4231,15 +4231,15 @@ class DecodedURL extends URL {
 
 /***/ }),
 
-/***/ 329:
+/***/ 1410:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-module.exports = __nccwpck_require__(4179);
+module.exports = __nccwpck_require__(1578);
 
 
 /***/ }),
 
-/***/ 4179:
+/***/ 1578:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -4511,34 +4511,34 @@ exports.debug = debug; // for test
 
 /***/ }),
 
-/***/ 9522:
+/***/ 7253:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Client = __nccwpck_require__(3275)
-const Dispatcher = __nccwpck_require__(3805)
-const Pool = __nccwpck_require__(3906)
-const BalancedPool = __nccwpck_require__(4107)
-const Agent = __nccwpck_require__(8951)
-const ProxyAgent = __nccwpck_require__(3490)
-const EnvHttpProxyAgent = __nccwpck_require__(9551)
-const RetryAgent = __nccwpck_require__(9412)
-const errors = __nccwpck_require__(2229)
-const util = __nccwpck_require__(1702)
+const Client = __nccwpck_require__(9116)
+const Dispatcher = __nccwpck_require__(5774)
+const Pool = __nccwpck_require__(3761)
+const BalancedPool = __nccwpck_require__(1046)
+const Agent = __nccwpck_require__(7698)
+const ProxyAgent = __nccwpck_require__(2571)
+const EnvHttpProxyAgent = __nccwpck_require__(9456)
+const RetryAgent = __nccwpck_require__(6838)
+const errors = __nccwpck_require__(9270)
+const util = __nccwpck_require__(4457)
 const { InvalidArgumentError } = errors
-const api = __nccwpck_require__(4333)
-const buildConnector = __nccwpck_require__(2230)
-const MockClient = __nccwpck_require__(7435)
-const MockAgent = __nccwpck_require__(6583)
-const MockPool = __nccwpck_require__(3074)
-const mockErrors = __nccwpck_require__(3863)
-const RetryHandler = __nccwpck_require__(4962)
-const { getGlobalDispatcher, setGlobalDispatcher } = __nccwpck_require__(2603)
-const DecoratorHandler = __nccwpck_require__(457)
-const RedirectHandler = __nccwpck_require__(3188)
-const createRedirectInterceptor = __nccwpck_require__(6318)
+const api = __nccwpck_require__(9142)
+const buildConnector = __nccwpck_require__(7135)
+const MockClient = __nccwpck_require__(1298)
+const MockAgent = __nccwpck_require__(2116)
+const MockPool = __nccwpck_require__(6495)
+const mockErrors = __nccwpck_require__(4158)
+const RetryHandler = __nccwpck_require__(397)
+const { getGlobalDispatcher, setGlobalDispatcher } = __nccwpck_require__(9098)
+const DecoratorHandler = __nccwpck_require__(9638)
+const RedirectHandler = __nccwpck_require__(1805)
+const createRedirectInterceptor = __nccwpck_require__(631)
 
 Object.assign(Dispatcher.prototype, api)
 
@@ -4556,10 +4556,10 @@ module.exports.DecoratorHandler = DecoratorHandler
 module.exports.RedirectHandler = RedirectHandler
 module.exports.createRedirectInterceptor = createRedirectInterceptor
 module.exports.interceptors = {
-  redirect: __nccwpck_require__(3528),
-  retry: __nccwpck_require__(6824),
-  dump: __nccwpck_require__(3134),
-  dns: __nccwpck_require__(601)
+  redirect: __nccwpck_require__(9113),
+  retry: __nccwpck_require__(6879),
+  dump: __nccwpck_require__(8103),
+  dns: __nccwpck_require__(6038)
 }
 
 module.exports.buildConnector = buildConnector
@@ -4621,7 +4621,7 @@ function makeDispatcher (fn) {
 module.exports.setGlobalDispatcher = setGlobalDispatcher
 module.exports.getGlobalDispatcher = getGlobalDispatcher
 
-const fetchImpl = (__nccwpck_require__(9640).fetch)
+const fetchImpl = (__nccwpck_require__(831).fetch)
 module.exports.fetch = async function fetch (init, options = undefined) {
   try {
     return await fetchImpl(init, options)
@@ -4633,39 +4633,39 @@ module.exports.fetch = async function fetch (init, options = undefined) {
     throw err
   }
 }
-module.exports.Headers = __nccwpck_require__(3210).Headers
-module.exports.Response = __nccwpck_require__(3009).Response
-module.exports.Request = __nccwpck_require__(3045).Request
-module.exports.FormData = __nccwpck_require__(2044).FormData
+module.exports.Headers = __nccwpck_require__(5057).Headers
+module.exports.Response = __nccwpck_require__(2536).Response
+module.exports.Request = __nccwpck_require__(6454).Request
+module.exports.FormData = __nccwpck_require__(6557).FormData
 module.exports.File = globalThis.File ?? (__nccwpck_require__(4573).File)
-module.exports.FileReader = __nccwpck_require__(3453).FileReader
+module.exports.FileReader = __nccwpck_require__(5556).FileReader
 
-const { setGlobalOrigin, getGlobalOrigin } = __nccwpck_require__(561)
+const { setGlobalOrigin, getGlobalOrigin } = __nccwpck_require__(3424)
 
 module.exports.setGlobalOrigin = setGlobalOrigin
 module.exports.getGlobalOrigin = getGlobalOrigin
 
-const { CacheStorage } = __nccwpck_require__(7535)
-const { kConstruct } = __nccwpck_require__(2619)
+const { CacheStorage } = __nccwpck_require__(4382)
+const { kConstruct } = __nccwpck_require__(2812)
 
 // Cache & CacheStorage are tightly coupled with fetch. Even if it may run
 // in an older version of Node, it doesn't have any use without fetch.
 module.exports.caches = new CacheStorage(kConstruct)
 
-const { deleteCookie, getCookies, getSetCookies, setCookie } = __nccwpck_require__(7707)
+const { deleteCookie, getCookies, getSetCookies, setCookie } = __nccwpck_require__(9156)
 
 module.exports.deleteCookie = deleteCookie
 module.exports.getCookies = getCookies
 module.exports.getSetCookies = getSetCookies
 module.exports.setCookie = setCookie
 
-const { parseMIMEType, serializeAMimeType } = __nccwpck_require__(258)
+const { parseMIMEType, serializeAMimeType } = __nccwpck_require__(4883)
 
 module.exports.parseMIMEType = parseMIMEType
 module.exports.serializeAMimeType = serializeAMimeType
 
-const { CloseEvent, ErrorEvent, MessageEvent } = __nccwpck_require__(9858)
-module.exports.WebSocket = __nccwpck_require__(3380).WebSocket
+const { CloseEvent, ErrorEvent, MessageEvent } = __nccwpck_require__(2203)
+module.exports.WebSocket = __nccwpck_require__(7799).WebSocket
 module.exports.CloseEvent = CloseEvent
 module.exports.ErrorEvent = ErrorEvent
 module.exports.MessageEvent = MessageEvent
@@ -4681,18 +4681,18 @@ module.exports.MockPool = MockPool
 module.exports.MockAgent = MockAgent
 module.exports.mockErrors = mockErrors
 
-const { EventSource } = __nccwpck_require__(8612)
+const { EventSource } = __nccwpck_require__(8207)
 
 module.exports.EventSource = EventSource
 
 
 /***/ }),
 
-/***/ 8268:
+/***/ 61:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const { addAbortListener } = __nccwpck_require__(1702)
-const { RequestAbortedError } = __nccwpck_require__(2229)
+const { addAbortListener } = __nccwpck_require__(4457)
+const { RequestAbortedError } = __nccwpck_require__(9270)
 
 const kListener = Symbol('kListener')
 const kSignal = Symbol('kSignal')
@@ -4752,7 +4752,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3106:
+/***/ 9121:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -4760,9 +4760,9 @@ module.exports = {
 
 const assert = __nccwpck_require__(4589)
 const { AsyncResource } = __nccwpck_require__(6698)
-const { InvalidArgumentError, SocketError } = __nccwpck_require__(2229)
-const util = __nccwpck_require__(1702)
-const { addSignal, removeSignal } = __nccwpck_require__(8268)
+const { InvalidArgumentError, SocketError } = __nccwpck_require__(9270)
+const util = __nccwpck_require__(4457)
+const { addSignal, removeSignal } = __nccwpck_require__(61)
 
 class ConnectHandler extends AsyncResource {
   constructor (opts, callback) {
@@ -4868,7 +4868,7 @@ module.exports = connect
 
 /***/ }),
 
-/***/ 6952:
+/***/ 3737:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -4883,10 +4883,10 @@ const {
   InvalidArgumentError,
   InvalidReturnValueError,
   RequestAbortedError
-} = __nccwpck_require__(2229)
-const util = __nccwpck_require__(1702)
+} = __nccwpck_require__(9270)
+const util = __nccwpck_require__(4457)
 const { AsyncResource } = __nccwpck_require__(6698)
-const { addSignal, removeSignal } = __nccwpck_require__(8268)
+const { addSignal, removeSignal } = __nccwpck_require__(61)
 const assert = __nccwpck_require__(4589)
 
 const kResume = Symbol('resume')
@@ -5127,17 +5127,17 @@ module.exports = pipeline
 
 /***/ }),
 
-/***/ 3117:
+/***/ 7010:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const assert = __nccwpck_require__(4589)
-const { Readable } = __nccwpck_require__(405)
-const { InvalidArgumentError, RequestAbortedError } = __nccwpck_require__(2229)
-const util = __nccwpck_require__(1702)
-const { getResolveErrorBodyCallback } = __nccwpck_require__(5373)
+const { Readable } = __nccwpck_require__(3468)
+const { InvalidArgumentError, RequestAbortedError } = __nccwpck_require__(9270)
+const util = __nccwpck_require__(4457)
+const { getResolveErrorBodyCallback } = __nccwpck_require__(3640)
 const { AsyncResource } = __nccwpck_require__(6698)
 
 class RequestHandler extends AsyncResource {
@@ -5349,7 +5349,7 @@ module.exports.RequestHandler = RequestHandler
 
 /***/ }),
 
-/***/ 4318:
+/***/ 5095:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -5357,11 +5357,11 @@ module.exports.RequestHandler = RequestHandler
 
 const assert = __nccwpck_require__(4589)
 const { finished, PassThrough } = __nccwpck_require__(7075)
-const { InvalidArgumentError, InvalidReturnValueError } = __nccwpck_require__(2229)
-const util = __nccwpck_require__(1702)
-const { getResolveErrorBodyCallback } = __nccwpck_require__(5373)
+const { InvalidArgumentError, InvalidReturnValueError } = __nccwpck_require__(9270)
+const util = __nccwpck_require__(4457)
+const { getResolveErrorBodyCallback } = __nccwpck_require__(3640)
 const { AsyncResource } = __nccwpck_require__(6698)
-const { addSignal, removeSignal } = __nccwpck_require__(8268)
+const { addSignal, removeSignal } = __nccwpck_require__(61)
 
 class StreamHandler extends AsyncResource {
   constructor (opts, factory, callback) {
@@ -5577,16 +5577,16 @@ module.exports = stream
 
 /***/ }),
 
-/***/ 3836:
+/***/ 5355:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { InvalidArgumentError, SocketError } = __nccwpck_require__(2229)
+const { InvalidArgumentError, SocketError } = __nccwpck_require__(9270)
 const { AsyncResource } = __nccwpck_require__(6698)
-const util = __nccwpck_require__(1702)
-const { addSignal, removeSignal } = __nccwpck_require__(8268)
+const util = __nccwpck_require__(4457)
+const { addSignal, removeSignal } = __nccwpck_require__(61)
 const assert = __nccwpck_require__(4589)
 
 class UpgradeHandler extends AsyncResource {
@@ -5693,22 +5693,22 @@ module.exports = upgrade
 
 /***/ }),
 
-/***/ 4333:
+/***/ 9142:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-module.exports.request = __nccwpck_require__(3117)
-module.exports.stream = __nccwpck_require__(4318)
-module.exports.pipeline = __nccwpck_require__(6952)
-module.exports.upgrade = __nccwpck_require__(3836)
-module.exports.connect = __nccwpck_require__(3106)
+module.exports.request = __nccwpck_require__(7010)
+module.exports.stream = __nccwpck_require__(5095)
+module.exports.pipeline = __nccwpck_require__(3737)
+module.exports.upgrade = __nccwpck_require__(5355)
+module.exports.connect = __nccwpck_require__(9121)
 
 
 /***/ }),
 
-/***/ 405:
+/***/ 3468:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -5718,9 +5718,9 @@ module.exports.connect = __nccwpck_require__(3106)
 
 const assert = __nccwpck_require__(4589)
 const { Readable } = __nccwpck_require__(7075)
-const { RequestAbortedError, NotSupportedError, InvalidArgumentError, AbortError } = __nccwpck_require__(2229)
-const util = __nccwpck_require__(1702)
-const { ReadableStreamFrom } = __nccwpck_require__(1702)
+const { RequestAbortedError, NotSupportedError, InvalidArgumentError, AbortError } = __nccwpck_require__(9270)
+const util = __nccwpck_require__(4457)
+const { ReadableStreamFrom } = __nccwpck_require__(4457)
 
 const kConsume = Symbol('kConsume')
 const kReading = Symbol('kReading')
@@ -6101,15 +6101,15 @@ module.exports = { Readable: BodyReadable, chunksDecode }
 
 /***/ }),
 
-/***/ 5373:
+/***/ 3640:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const assert = __nccwpck_require__(4589)
 const {
   ResponseStatusCodeError
-} = __nccwpck_require__(2229)
+} = __nccwpck_require__(9270)
 
-const { chunksDecode } = __nccwpck_require__(405)
+const { chunksDecode } = __nccwpck_require__(3468)
 const CHUNK_LIMIT = 128 * 1024
 
 async function getResolveErrorBodyCallback ({ callback, body, contentType, statusCode, statusMessage, headers }) {
@@ -6201,7 +6201,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 2230:
+/***/ 7135:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -6209,9 +6209,9 @@ module.exports = {
 
 const net = __nccwpck_require__(7030)
 const assert = __nccwpck_require__(4589)
-const util = __nccwpck_require__(1702)
-const { InvalidArgumentError, ConnectTimeoutError } = __nccwpck_require__(2229)
-const timers = __nccwpck_require__(9645)
+const util = __nccwpck_require__(4457)
+const { InvalidArgumentError, ConnectTimeoutError } = __nccwpck_require__(9270)
+const timers = __nccwpck_require__(4462)
 
 function noop () {}
 
@@ -6449,7 +6449,7 @@ module.exports = buildConnector
 
 /***/ }),
 
-/***/ 1225:
+/***/ 1048:
 /***/ ((module) => {
 
 "use strict";
@@ -6575,7 +6575,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9304:
+/***/ 3677:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -6785,7 +6785,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 2229:
+/***/ 9270:
 /***/ ((module) => {
 
 "use strict";
@@ -7218,7 +7218,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9481:
+/***/ 6676:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -7227,7 +7227,7 @@ module.exports = {
 const {
   InvalidArgumentError,
   NotSupportedError
-} = __nccwpck_require__(2229)
+} = __nccwpck_require__(9270)
 const assert = __nccwpck_require__(4589)
 const {
   isValidHTTPToken,
@@ -7242,9 +7242,9 @@ const {
   validateHandler,
   getServerName,
   normalizedMethodRecords
-} = __nccwpck_require__(1702)
-const { channels } = __nccwpck_require__(9304)
-const { headerNameLowerCasedRecord } = __nccwpck_require__(1225)
+} = __nccwpck_require__(4457)
+const { channels } = __nccwpck_require__(3677)
+const { headerNameLowerCasedRecord } = __nccwpck_require__(1048)
 
 // Verifies that a given path is valid does not contain control chars \x00 to \x20
 const invalidPathRegex = /[^\u0021-\u00ff]/
@@ -7631,7 +7631,7 @@ module.exports = Request
 
 /***/ }),
 
-/***/ 4469:
+/***/ 1912:
 /***/ ((module) => {
 
 module.exports = {
@@ -7705,7 +7705,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 7626:
+/***/ 3153:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -7714,7 +7714,7 @@ module.exports = {
 const {
   wellknownHeaderNames,
   headerNameLowerCasedRecord
-} = __nccwpck_require__(1225)
+} = __nccwpck_require__(1048)
 
 class TstNode {
   /** @type {any} */
@@ -7865,14 +7865,14 @@ module.exports = {
 
 /***/ }),
 
-/***/ 1702:
+/***/ 4457:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const assert = __nccwpck_require__(4589)
-const { kDestroyed, kBodyUsed, kListeners, kBody } = __nccwpck_require__(4469)
+const { kDestroyed, kBodyUsed, kListeners, kBody } = __nccwpck_require__(1912)
 const { IncomingMessage } = __nccwpck_require__(7067)
 const stream = __nccwpck_require__(7075)
 const net = __nccwpck_require__(7030)
@@ -7880,9 +7880,9 @@ const { Blob } = __nccwpck_require__(4573)
 const nodeUtil = __nccwpck_require__(7975)
 const { stringify } = __nccwpck_require__(1792)
 const { EventEmitter: EE } = __nccwpck_require__(8474)
-const { InvalidArgumentError } = __nccwpck_require__(2229)
-const { headerNameLowerCasedRecord } = __nccwpck_require__(1225)
-const { tree } = __nccwpck_require__(7626)
+const { InvalidArgumentError } = __nccwpck_require__(9270)
+const { headerNameLowerCasedRecord } = __nccwpck_require__(1048)
+const { tree } = __nccwpck_require__(3153)
 
 const [nodeMajor, nodeMinor] = process.versions.node.split('.').map(v => Number(v))
 
@@ -8592,19 +8592,19 @@ module.exports = {
 
 /***/ }),
 
-/***/ 8951:
+/***/ 7698:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { InvalidArgumentError } = __nccwpck_require__(2229)
-const { kClients, kRunning, kClose, kDestroy, kDispatch, kInterceptors } = __nccwpck_require__(4469)
-const DispatcherBase = __nccwpck_require__(9471)
-const Pool = __nccwpck_require__(3906)
-const Client = __nccwpck_require__(3275)
-const util = __nccwpck_require__(1702)
-const createRedirectInterceptor = __nccwpck_require__(6318)
+const { InvalidArgumentError } = __nccwpck_require__(9270)
+const { kClients, kRunning, kClose, kDestroy, kDispatch, kInterceptors } = __nccwpck_require__(1912)
+const DispatcherBase = __nccwpck_require__(9726)
+const Pool = __nccwpck_require__(3761)
+const Client = __nccwpck_require__(9116)
+const util = __nccwpck_require__(4457)
+const createRedirectInterceptor = __nccwpck_require__(631)
 
 const kOnConnect = Symbol('onConnect')
 const kOnDisconnect = Symbol('onDisconnect')
@@ -8622,7 +8622,6 @@ function defaultFactory (origin, opts) {
 
 class Agent extends DispatcherBase {
   constructor ({ factory = defaultFactory, maxRedirections = 0, connect, ...options } = {}) {
-
     if (typeof factory !== 'function') {
       throw new InvalidArgumentError('factory must be a function.')
     }
@@ -8730,7 +8729,7 @@ module.exports = Agent
 
 /***/ }),
 
-/***/ 4107:
+/***/ 1046:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -8739,7 +8738,7 @@ module.exports = Agent
 const {
   BalancedPoolMissingUpstreamError,
   InvalidArgumentError
-} = __nccwpck_require__(2229)
+} = __nccwpck_require__(9270)
 const {
   PoolBase,
   kClients,
@@ -8747,10 +8746,10 @@ const {
   kAddClient,
   kRemoveClient,
   kGetDispatcher
-} = __nccwpck_require__(1994)
-const Pool = __nccwpck_require__(3906)
-const { kUrl, kInterceptors } = __nccwpck_require__(4469)
-const { parseOrigin } = __nccwpck_require__(1702)
+} = __nccwpck_require__(2347)
+const Pool = __nccwpck_require__(3761)
+const { kUrl, kInterceptors } = __nccwpck_require__(1912)
+const { parseOrigin } = __nccwpck_require__(4457)
 const kFactory = Symbol('factory')
 
 const kOptions = Symbol('options')
@@ -8947,7 +8946,7 @@ module.exports = BalancedPool
 
 /***/ }),
 
-/***/ 4935:
+/***/ 4858:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -8956,9 +8955,9 @@ module.exports = BalancedPool
 /* global WebAssembly */
 
 const assert = __nccwpck_require__(4589)
-const util = __nccwpck_require__(1702)
-const { channels } = __nccwpck_require__(9304)
-const timers = __nccwpck_require__(9645)
+const util = __nccwpck_require__(4457)
+const { channels } = __nccwpck_require__(3677)
+const timers = __nccwpck_require__(4462)
 const {
   RequestContentLengthMismatchError,
   ResponseContentLengthMismatchError,
@@ -8970,7 +8969,7 @@ const {
   BodyTimeoutError,
   HTTPParserError,
   ResponseExceededMaxSizeError
-} = __nccwpck_require__(2229)
+} = __nccwpck_require__(9270)
 const {
   kUrl,
   kReset,
@@ -9003,22 +9002,25 @@ const {
   kOnError,
   kResume,
   kHTTPContext
-} = __nccwpck_require__(4469)
+} = __nccwpck_require__(1912)
 
-const constants = __nccwpck_require__(886)
+const constants = __nccwpck_require__(3779)
 const EMPTY_BUF = Buffer.alloc(0)
 const FastBuffer = Buffer[Symbol.species]
 const addListener = util.addListener
 const removeAllListeners = util.removeAllListeners
+const kIdleSocketValidation = Symbol('kIdleSocketValidation')
+const kIdleSocketValidationTimeout = Symbol('kIdleSocketValidationTimeout')
+const kSocketUsed = Symbol('kSocketUsed')
 
 let extractBody
 
 async function lazyllhttp () {
-  const llhttpWasmData = process.env.JEST_WORKER_ID ? __nccwpck_require__(2668) : undefined
+  const llhttpWasmData = process.env.JEST_WORKER_ID ? __nccwpck_require__(1789) : undefined
 
   let mod
   try {
-    mod = await WebAssembly.compile(__nccwpck_require__(1252))
+    mod = await WebAssembly.compile(__nccwpck_require__(7279))
   } catch (e) {
     /* istanbul ignore next */
 
@@ -9026,7 +9028,7 @@ async function lazyllhttp () {
     // being enabled, but the occurring of this other error
     // * https://github.com/emscripten-core/emscripten/issues/11495
     // got me to remove that check to avoid breaking Node 12.
-    mod = await WebAssembly.compile(llhttpWasmData || __nccwpck_require__(2668))
+    mod = await WebAssembly.compile(llhttpWasmData || __nccwpck_require__(1789))
   }
 
   return await WebAssembly.instantiate(mod, {
@@ -9232,27 +9234,69 @@ class Parser {
 
       const offset = llhttp.llhttp_get_error_pos(this.ptr) - currentBufferPtr
 
-      if (ret === constants.ERROR.PAUSED_UPGRADE) {
-        this.onUpgrade(data.slice(offset))
-      } else if (ret === constants.ERROR.PAUSED) {
-        this.paused = true
-        socket.unshift(data.slice(offset))
-      } else if (ret !== constants.ERROR.OK) {
-        const ptr = llhttp.llhttp_get_error_reason(this.ptr)
-        let message = ''
-        /* istanbul ignore else: difficult to make a test case for */
-        if (ptr) {
-          const len = new Uint8Array(llhttp.memory.buffer, ptr).indexOf(0)
-          message =
-            'Response does not match the HTTP/1.1 protocol (' +
-            Buffer.from(llhttp.memory.buffer, ptr, len).toString() +
-            ')'
+      if (ret !== constants.ERROR.OK) {
+        const body = data.subarray(offset)
+
+        if (ret === constants.ERROR.PAUSED_UPGRADE) {
+          this.onUpgrade(body)
+        } else if (ret === constants.ERROR.PAUSED) {
+          this.paused = true
+          socket.unshift(body)
+        } else {
+          throw this.createError(ret, body)
         }
-        throw new HTTPParserError(message, constants.ERROR[ret], data.slice(offset))
       }
     } catch (err) {
       util.destroy(socket, err)
     }
+  }
+
+  finish () {
+    assert(currentParser === null)
+    assert(this.ptr != null)
+    assert(!this.paused)
+
+    const { llhttp } = this
+
+    let ret
+
+    try {
+      currentParser = this
+      ret = llhttp.llhttp_finish(this.ptr)
+    } finally {
+      currentParser = null
+    }
+
+    if (ret === constants.ERROR.OK) {
+      return null
+    }
+
+    if (ret === constants.ERROR.PAUSED || ret === constants.ERROR.PAUSED_UPGRADE) {
+      this.paused = true
+      return null
+    }
+
+    return this.createError(ret, EMPTY_BUF)
+  }
+
+  createError (ret, data) {
+    const { llhttp, contentLength, bytesRead } = this
+
+    if (contentLength && bytesRead !== parseInt(contentLength, 10)) {
+      return new ResponseContentLengthMismatchError()
+    }
+
+    const ptr = llhttp.llhttp_get_error_reason(this.ptr)
+    let message = ''
+    if (ptr) {
+      const len = new Uint8Array(llhttp.memory.buffer, ptr).indexOf(0)
+      message =
+        'Response does not match the HTTP/1.1 protocol (' +
+        Buffer.from(llhttp.memory.buffer, ptr, len).toString() +
+        ')'
+    }
+
+    return new HTTPParserError(message, constants.ERROR[ret], data)
   }
 
   destroy () {
@@ -9279,6 +9323,11 @@ class Parser {
 
     /* istanbul ignore next: difficult to make a test case for */
     if (socket.destroyed) {
+      return -1
+    }
+
+    if (client[kRunning] === 0) {
+      util.destroy(socket, new SocketError('bad response', util.getSocketInfo(socket)))
       return -1
     }
 
@@ -9382,6 +9431,11 @@ class Parser {
 
     /* istanbul ignore next: difficult to make a test case for */
     if (socket.destroyed) {
+      return -1
+    }
+
+    if (client[kRunning] === 0) {
+      util.destroy(socket, new SocketError('bad response', util.getSocketInfo(socket)))
       return -1
     }
 
@@ -9558,6 +9612,7 @@ class Parser {
     request.onComplete(headers)
 
     client[kQueue][client[kRunningIdx]++] = null
+    socket[kSocketUsed] = true
 
     if (socket[kWriting]) {
       assert(client[kRunning] === 0)
@@ -9616,6 +9671,9 @@ async function connectH1 (client, socket) {
   socket[kWriting] = false
   socket[kReset] = false
   socket[kBlocking] = false
+  socket[kIdleSocketValidation] = 0
+  socket[kIdleSocketValidationTimeout] = null
+  socket[kSocketUsed] = false
   socket[kParser] = new Parser(client, socket, llhttpInstance)
 
   addListener(socket, 'error', function (err) {
@@ -9626,8 +9684,11 @@ async function connectH1 (client, socket) {
     // On Mac OS, we get an ECONNRESET even if there is a full body to be forwarded
     // to the user.
     if (err.code === 'ECONNRESET' && parser.statusCode && !parser.shouldKeepAlive) {
-      // We treat all incoming data so for as a valid response.
-      parser.onMessageComplete()
+      const parserErr = parser.finish()
+      if (parserErr) {
+        this[kError] = parserErr
+        this[kClient][kOnError](parserErr)
+      }
       return
     }
 
@@ -9646,8 +9707,10 @@ async function connectH1 (client, socket) {
     const parser = this[kParser]
 
     if (parser.statusCode && !parser.shouldKeepAlive) {
-      // We treat all incoming data so far as a valid response.
-      parser.onMessageComplete()
+      const parserErr = parser.finish()
+      if (parserErr) {
+        util.destroy(this, parserErr)
+      }
       return
     }
 
@@ -9657,10 +9720,11 @@ async function connectH1 (client, socket) {
     const client = this[kClient]
     const parser = this[kParser]
 
+    clearIdleSocketValidation(this)
+
     if (parser) {
       if (!this[kError] && parser.statusCode && !parser.shouldKeepAlive) {
-        // We treat all incoming data so far as a valid response.
-        parser.onMessageComplete()
+        this[kError] = parser.finish() || this[kError]
       }
 
       this[kParser].destroy()
@@ -9723,7 +9787,7 @@ async function connectH1 (client, socket) {
       return socket.destroyed
     },
     busy (request) {
-      if (socket[kWriting] || socket[kReset] || socket[kBlocking]) {
+      if (socket[kWriting] || socket[kReset] || socket[kBlocking] || socket[kIdleSocketValidation] === 1) {
         return true
       }
 
@@ -9761,6 +9825,31 @@ async function connectH1 (client, socket) {
   }
 }
 
+function clearIdleSocketValidation (socket) {
+  if (socket[kIdleSocketValidationTimeout]) {
+    clearTimeout(socket[kIdleSocketValidationTimeout])
+    socket[kIdleSocketValidationTimeout] = null
+  }
+
+  socket[kIdleSocketValidation] = 0
+}
+
+function scheduleIdleSocketValidation (client, socket) {
+  socket[kIdleSocketValidation] = 1
+  socket[kIdleSocketValidationTimeout] = setTimeout(() => {
+    socket[kIdleSocketValidationTimeout] = null
+    socket[kIdleSocketValidation] = 2
+
+    if (client[kSocket] === socket && !socket.destroyed) {
+      client[kResume]()
+    }
+  }, 0)
+  socket[kIdleSocketValidationTimeout].unref?.()
+}
+
+/**
+ * @param {import('./client.js')} client
+ */
 function resumeH1 (client) {
   const socket = client[kSocket]
 
@@ -9773,6 +9862,32 @@ function resumeH1 (client) {
     } else if (socket[kNoRef] && socket.ref) {
       socket.ref()
       socket[kNoRef] = false
+    }
+
+    if (client[kRunning] === 0 && client[kPending] > 0 && socket[kSocketUsed]) {
+      if (socket[kIdleSocketValidation] === 0) {
+        scheduleIdleSocketValidation(client, socket)
+        socket[kParser].readMore()
+        if (socket.destroyed) {
+          return
+        }
+        return
+      }
+
+      if (socket[kIdleSocketValidation] === 1) {
+        socket[kParser].readMore()
+        if (socket.destroyed) {
+          return
+        }
+        return
+      }
+    }
+
+    if (client[kRunning] === 0) {
+      socket[kParser].readMore()
+      if (socket.destroyed) {
+        return
+      }
     }
 
     if (client[kSize] === 0) {
@@ -9821,7 +9936,7 @@ function writeH1 (client, request) {
 
   if (util.isFormDataLike(body)) {
     if (!extractBody) {
-      extractBody = (__nccwpck_require__(6110).extractBody)
+      extractBody = (__nccwpck_require__(6831).extractBody)
     }
 
     const [bodyStream, contentType] = extractBody(body)
@@ -9868,6 +9983,7 @@ function writeH1 (client, request) {
   }
 
   const socket = client[kSocket]
+  clearIdleSocketValidation(socket)
 
   const abort = (err) => {
     if (request.aborted || request.completed) {
@@ -10325,7 +10441,7 @@ module.exports = connectH1
 
 /***/ }),
 
-/***/ 9834:
+/***/ 5415:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -10333,13 +10449,13 @@ module.exports = connectH1
 
 const assert = __nccwpck_require__(4589)
 const { pipeline } = __nccwpck_require__(7075)
-const util = __nccwpck_require__(1702)
+const util = __nccwpck_require__(4457)
 const {
   RequestContentLengthMismatchError,
   RequestAbortedError,
   SocketError,
   InformationalError
-} = __nccwpck_require__(2229)
+} = __nccwpck_require__(9270)
 const {
   kUrl,
   kReset,
@@ -10358,7 +10474,7 @@ const {
   kResume,
   kSize,
   kHTTPContext
-} = __nccwpck_require__(4469)
+} = __nccwpck_require__(1912)
 
 const kOpenStreams = Symbol('open streams')
 
@@ -10717,7 +10833,7 @@ function writeH2 (client, request) {
   let contentLength = util.bodyLength(body)
 
   if (util.isFormDataLike(body)) {
-    extractBody ??= (__nccwpck_require__(6110).extractBody)
+    extractBody ??= (__nccwpck_require__(6831).extractBody)
 
     const [bodyStream, contentType] = extractBody(body)
     headers['content-type'] = contentType
@@ -11077,7 +11193,7 @@ module.exports = connectH2
 
 /***/ }),
 
-/***/ 3275:
+/***/ 9116:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -11088,16 +11204,16 @@ module.exports = connectH2
 const assert = __nccwpck_require__(4589)
 const net = __nccwpck_require__(7030)
 const http = __nccwpck_require__(7067)
-const util = __nccwpck_require__(1702)
-const { channels } = __nccwpck_require__(9304)
-const Request = __nccwpck_require__(9481)
-const DispatcherBase = __nccwpck_require__(9471)
+const util = __nccwpck_require__(4457)
+const { channels } = __nccwpck_require__(3677)
+const Request = __nccwpck_require__(6676)
+const DispatcherBase = __nccwpck_require__(9726)
 const {
   InvalidArgumentError,
   InformationalError,
   ClientDestroyedError
-} = __nccwpck_require__(2229)
-const buildConnector = __nccwpck_require__(2230)
+} = __nccwpck_require__(9270)
+const buildConnector = __nccwpck_require__(7135)
 const {
   kUrl,
   kServerName,
@@ -11139,9 +11255,9 @@ const {
   kHTTPContext,
   kMaxConcurrentStreams,
   kResume
-} = __nccwpck_require__(4469)
-const connectH1 = __nccwpck_require__(4935)
-const connectH2 = __nccwpck_require__(9834)
+} = __nccwpck_require__(1912)
+const connectH1 = __nccwpck_require__(4858)
+const connectH2 = __nccwpck_require__(5415)
 let deprecatedInterceptorWarned = false
 
 const kClosedResolve = Symbol('kClosedResolve')
@@ -11448,7 +11564,7 @@ class Client extends DispatcherBase {
   }
 }
 
-const createRedirectInterceptor = __nccwpck_require__(6318)
+const createRedirectInterceptor = __nccwpck_require__(631)
 
 function onError (client, err) {
   if (
@@ -11708,19 +11824,19 @@ module.exports = Client
 
 /***/ }),
 
-/***/ 9471:
+/***/ 9726:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Dispatcher = __nccwpck_require__(3805)
+const Dispatcher = __nccwpck_require__(5774)
 const {
   ClientDestroyedError,
   ClientClosedError,
   InvalidArgumentError
-} = __nccwpck_require__(2229)
-const { kDestroy, kClose, kClosed, kDestroyed, kDispatch, kInterceptors } = __nccwpck_require__(4469)
+} = __nccwpck_require__(9270)
+const { kDestroy, kClose, kClosed, kDestroyed, kDispatch, kInterceptors } = __nccwpck_require__(1912)
 
 const kOnDestroyed = Symbol('onDestroyed')
 const kOnClosed = Symbol('onClosed')
@@ -11740,6 +11856,7 @@ class DispatcherBase extends Dispatcher {
 
   get webSocketOptions () {
     return {
+      maxFragments: this[kWebSocketOptions].maxFragments ?? 131072,
       maxPayloadSize: this[kWebSocketOptions].maxPayloadSize ?? 128 * 1024 * 1024
     }
   }
@@ -11914,7 +12031,7 @@ module.exports = DispatcherBase
 
 /***/ }),
 
-/***/ 3805:
+/***/ 5774:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -11987,16 +12104,16 @@ module.exports = Dispatcher
 
 /***/ }),
 
-/***/ 9551:
+/***/ 9456:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const DispatcherBase = __nccwpck_require__(9471)
-const { kClose, kDestroy, kClosed, kDestroyed, kDispatch, kNoProxyAgent, kHttpProxyAgent, kHttpsProxyAgent } = __nccwpck_require__(4469)
-const ProxyAgent = __nccwpck_require__(3490)
-const Agent = __nccwpck_require__(8951)
+const DispatcherBase = __nccwpck_require__(9726)
+const { kClose, kDestroy, kClosed, kDestroyed, kDispatch, kNoProxyAgent, kHttpProxyAgent, kHttpsProxyAgent } = __nccwpck_require__(1912)
+const ProxyAgent = __nccwpck_require__(2571)
+const Agent = __nccwpck_require__(7698)
 
 const DEFAULT_PORTS = {
   'http:': 80,
@@ -12155,7 +12272,7 @@ module.exports = EnvHttpProxyAgent
 
 /***/ }),
 
-/***/ 50:
+/***/ 8591:
 /***/ ((module) => {
 
 "use strict";
@@ -12280,16 +12397,16 @@ module.exports = class FixedQueue {
 
 /***/ }),
 
-/***/ 1994:
+/***/ 2347:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const DispatcherBase = __nccwpck_require__(9471)
-const FixedQueue = __nccwpck_require__(50)
-const { kConnected, kSize, kRunning, kPending, kQueued, kBusy, kFree, kUrl, kClose, kDestroy, kDispatch } = __nccwpck_require__(4469)
-const PoolStats = __nccwpck_require__(7132)
+const DispatcherBase = __nccwpck_require__(9726)
+const FixedQueue = __nccwpck_require__(8591)
+const { kConnected, kSize, kRunning, kPending, kQueued, kBusy, kFree, kUrl, kClose, kDestroy, kDispatch } = __nccwpck_require__(1912)
+const PoolStats = __nccwpck_require__(8327)
 
 const kClients = Symbol('clients')
 const kNeedDrain = Symbol('needDrain')
@@ -12482,10 +12599,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ 7132:
+/***/ 8327:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const { kFree, kConnected, kPending, kQueued, kRunning, kSize } = __nccwpck_require__(4469)
+const { kFree, kConnected, kPending, kQueued, kRunning, kSize } = __nccwpck_require__(1912)
 const kPool = Symbol('pool')
 
 class PoolStats {
@@ -12523,7 +12640,7 @@ module.exports = PoolStats
 
 /***/ }),
 
-/***/ 3906:
+/***/ 3761:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -12535,14 +12652,14 @@ const {
   kNeedDrain,
   kAddClient,
   kGetDispatcher
-} = __nccwpck_require__(1994)
-const Client = __nccwpck_require__(3275)
+} = __nccwpck_require__(2347)
+const Client = __nccwpck_require__(9116)
 const {
   InvalidArgumentError
-} = __nccwpck_require__(2229)
-const util = __nccwpck_require__(1702)
-const { kUrl, kInterceptors } = __nccwpck_require__(4469)
-const buildConnector = __nccwpck_require__(2230)
+} = __nccwpck_require__(9270)
+const util = __nccwpck_require__(4457)
+const { kUrl, kInterceptors } = __nccwpck_require__(1912)
+const buildConnector = __nccwpck_require__(7135)
 
 const kOptions = Symbol('options')
 const kConnections = Symbol('connections')
@@ -12638,20 +12755,20 @@ module.exports = Pool
 
 /***/ }),
 
-/***/ 3490:
+/***/ 2571:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kProxy, kClose, kDestroy, kDispatch, kInterceptors } = __nccwpck_require__(4469)
+const { kProxy, kClose, kDestroy, kDispatch, kInterceptors } = __nccwpck_require__(1912)
 const { URL } = __nccwpck_require__(3136)
-const Agent = __nccwpck_require__(8951)
-const Pool = __nccwpck_require__(3906)
-const DispatcherBase = __nccwpck_require__(9471)
-const { InvalidArgumentError, RequestAbortedError, SecureProxyConnectionError } = __nccwpck_require__(2229)
-const buildConnector = __nccwpck_require__(2230)
-const Client = __nccwpck_require__(3275)
+const Agent = __nccwpck_require__(7698)
+const Pool = __nccwpck_require__(3761)
+const DispatcherBase = __nccwpck_require__(9726)
+const { InvalidArgumentError, RequestAbortedError, SecureProxyConnectionError } = __nccwpck_require__(9270)
+const buildConnector = __nccwpck_require__(7135)
+const Client = __nccwpck_require__(9116)
 
 const kAgent = Symbol('proxy agent')
 const kClient = Symbol('proxy client')
@@ -12920,14 +13037,14 @@ module.exports = ProxyAgent
 
 /***/ }),
 
-/***/ 9412:
+/***/ 6838:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Dispatcher = __nccwpck_require__(3805)
-const RetryHandler = __nccwpck_require__(4962)
+const Dispatcher = __nccwpck_require__(5774)
+const RetryHandler = __nccwpck_require__(397)
 
 class RetryAgent extends Dispatcher {
   #agent = null
@@ -12963,7 +13080,7 @@ module.exports = RetryAgent
 
 /***/ }),
 
-/***/ 2603:
+/***/ 9098:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -12972,8 +13089,8 @@ module.exports = RetryAgent
 // We include a version number for the Dispatcher API. In case of breaking changes,
 // this version number must be increased to avoid conflicts.
 const globalDispatcher = Symbol.for('undici.globalDispatcher.1')
-const { InvalidArgumentError } = __nccwpck_require__(2229)
-const Agent = __nccwpck_require__(8951)
+const { InvalidArgumentError } = __nccwpck_require__(9270)
+const Agent = __nccwpck_require__(7698)
 
 if (getGlobalDispatcher() === undefined) {
   setGlobalDispatcher(new Agent())
@@ -13003,7 +13120,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 457:
+/***/ 9638:
 /***/ ((module) => {
 
 "use strict";
@@ -13055,16 +13172,16 @@ module.exports = class DecoratorHandler {
 
 /***/ }),
 
-/***/ 3188:
+/***/ 1805:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const util = __nccwpck_require__(1702)
-const { kBodyUsed } = __nccwpck_require__(4469)
+const util = __nccwpck_require__(4457)
+const { kBodyUsed } = __nccwpck_require__(1912)
 const assert = __nccwpck_require__(4589)
-const { InvalidArgumentError } = __nccwpck_require__(2229)
+const { InvalidArgumentError } = __nccwpck_require__(9270)
 const EE = __nccwpck_require__(8474)
 
 const redirectableStatusCodes = [300, 301, 302, 303, 307, 308]
@@ -13295,21 +13412,21 @@ module.exports = RedirectHandler
 
 /***/ }),
 
-/***/ 4962:
+/***/ 397:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 const assert = __nccwpck_require__(4589)
 
-const { kRetryHandlerDefaultRetry } = __nccwpck_require__(4469)
-const { RequestRetryError } = __nccwpck_require__(2229)
+const { kRetryHandlerDefaultRetry } = __nccwpck_require__(1912)
+const { RequestRetryError } = __nccwpck_require__(9270)
 const {
   isDisturbed,
   parseHeaders,
   parseRangeHeader,
   wrapRequestBody
-} = __nccwpck_require__(1702)
+} = __nccwpck_require__(4457)
 
 function calculateRetryAfterHeader (retryAfter) {
   const current = Date.now()
@@ -13677,15 +13794,15 @@ module.exports = RetryHandler
 
 /***/ }),
 
-/***/ 601:
+/***/ 6038:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 const { isIP } = __nccwpck_require__(7030)
 const { lookup } = __nccwpck_require__(610)
-const DecoratorHandler = __nccwpck_require__(457)
-const { InvalidArgumentError, InformationalError } = __nccwpck_require__(2229)
+const DecoratorHandler = __nccwpck_require__(9638)
+const { InvalidArgumentError, InformationalError } = __nccwpck_require__(9270)
 const maxInt = Math.pow(2, 31) - 1
 
 class DNSInstance {
@@ -14060,15 +14177,15 @@ module.exports = interceptorOpts => {
 
 /***/ }),
 
-/***/ 3134:
+/***/ 8103:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const util = __nccwpck_require__(1702)
-const { InvalidArgumentError, RequestAbortedError } = __nccwpck_require__(2229)
-const DecoratorHandler = __nccwpck_require__(457)
+const util = __nccwpck_require__(4457)
+const { InvalidArgumentError, RequestAbortedError } = __nccwpck_require__(9270)
+const DecoratorHandler = __nccwpck_require__(9638)
 
 class DumpHandler extends DecoratorHandler {
   #maxSize = 1024 * 1024
@@ -14191,13 +14308,13 @@ module.exports = createDumpInterceptor
 
 /***/ }),
 
-/***/ 6318:
+/***/ 631:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const RedirectHandler = __nccwpck_require__(3188)
+const RedirectHandler = __nccwpck_require__(1805)
 
 function createRedirectInterceptor ({ maxRedirections: defaultMaxRedirections }) {
   return (dispatch) => {
@@ -14220,12 +14337,12 @@ module.exports = createRedirectInterceptor
 
 /***/ }),
 
-/***/ 3528:
+/***/ 9113:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const RedirectHandler = __nccwpck_require__(3188)
+const RedirectHandler = __nccwpck_require__(1805)
 
 module.exports = opts => {
   const globalMaxRedirections = opts?.maxRedirections
@@ -14252,12 +14369,12 @@ module.exports = opts => {
 
 /***/ }),
 
-/***/ 6824:
+/***/ 6879:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const RetryHandler = __nccwpck_require__(4962)
+const RetryHandler = __nccwpck_require__(397)
 
 module.exports = globalOpts => {
   return dispatch => {
@@ -14279,14 +14396,14 @@ module.exports = globalOpts => {
 
 /***/ }),
 
-/***/ 886:
+/***/ 3779:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SPECIAL_HEADERS = exports.HEADER_STATE = exports.MINOR = exports.MAJOR = exports.CONNECTION_TOKEN_CHARS = exports.HEADER_CHARS = exports.TOKEN = exports.STRICT_TOKEN = exports.HEX = exports.URL_CHAR = exports.STRICT_URL_CHAR = exports.USERINFO_CHARS = exports.MARK = exports.ALPHANUM = exports.NUM = exports.HEX_MAP = exports.NUM_MAP = exports.ALPHA = exports.FINISH = exports.H_METHOD_MAP = exports.METHOD_MAP = exports.METHODS_RTSP = exports.METHODS_ICE = exports.METHODS_HTTP = exports.METHODS = exports.LENIENT_FLAGS = exports.FLAGS = exports.TYPE = exports.ERROR = void 0;
-const utils_1 = __nccwpck_require__(8270);
+const utils_1 = __nccwpck_require__(4579);
 // C headers
 var ERROR;
 (function (ERROR) {
@@ -14564,7 +14681,7 @@ exports.SPECIAL_HEADERS = {
 
 /***/ }),
 
-/***/ 2668:
+/***/ 1789:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -14577,7 +14694,7 @@ module.exports = Buffer.from('AGFzbQEAAAABJwdgAX8Bf2ADf39/AX9gAX8AYAJ/fwBgBH9/f3
 
 /***/ }),
 
-/***/ 1252:
+/***/ 7279:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -14590,7 +14707,7 @@ module.exports = Buffer.from('AGFzbQEAAAABJwdgAX8Bf2ADf39/AX9gAX8AYAJ/fwBgBH9/f3
 
 /***/ }),
 
-/***/ 8270:
+/***/ 4579:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14612,14 +14729,14 @@ exports.enumToMap = enumToMap;
 
 /***/ }),
 
-/***/ 6583:
+/***/ 2116:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kClients } = __nccwpck_require__(4469)
-const Agent = __nccwpck_require__(8951)
+const { kClients } = __nccwpck_require__(1912)
+const Agent = __nccwpck_require__(7698)
 const {
   kAgent,
   kMockAgentSet,
@@ -14630,14 +14747,14 @@ const {
   kGetNetConnect,
   kOptions,
   kFactory
-} = __nccwpck_require__(4703)
-const MockClient = __nccwpck_require__(7435)
-const MockPool = __nccwpck_require__(3074)
-const { matchValue, buildMockOptions } = __nccwpck_require__(1923)
-const { InvalidArgumentError, UndiciError } = __nccwpck_require__(2229)
-const Dispatcher = __nccwpck_require__(3805)
-const Pluralizer = __nccwpck_require__(3195)
-const PendingInterceptorsFormatter = __nccwpck_require__(1808)
+} = __nccwpck_require__(1024)
+const MockClient = __nccwpck_require__(1298)
+const MockPool = __nccwpck_require__(6495)
+const { matchValue, buildMockOptions } = __nccwpck_require__(6948)
+const { InvalidArgumentError, UndiciError } = __nccwpck_require__(9270)
+const Dispatcher = __nccwpck_require__(5774)
+const Pluralizer = __nccwpck_require__(9556)
+const PendingInterceptorsFormatter = __nccwpck_require__(1651)
 
 class MockAgent extends Dispatcher {
   constructor (opts) {
@@ -14780,15 +14897,15 @@ module.exports = MockAgent
 
 /***/ }),
 
-/***/ 7435:
+/***/ 1298:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { promisify } = __nccwpck_require__(7975)
-const Client = __nccwpck_require__(3275)
-const { buildMockDispatch } = __nccwpck_require__(1923)
+const Client = __nccwpck_require__(9116)
+const { buildMockDispatch } = __nccwpck_require__(6948)
 const {
   kDispatches,
   kMockAgent,
@@ -14797,10 +14914,10 @@ const {
   kOrigin,
   kOriginalDispatch,
   kConnected
-} = __nccwpck_require__(4703)
-const { MockInterceptor } = __nccwpck_require__(1949)
-const Symbols = __nccwpck_require__(4469)
-const { InvalidArgumentError } = __nccwpck_require__(2229)
+} = __nccwpck_require__(1024)
+const { MockInterceptor } = __nccwpck_require__(8222)
+const Symbols = __nccwpck_require__(1912)
+const { InvalidArgumentError } = __nccwpck_require__(9270)
 
 /**
  * MockClient provides an API that extends the Client to influence the mockDispatches.
@@ -14847,13 +14964,13 @@ module.exports = MockClient
 
 /***/ }),
 
-/***/ 3863:
+/***/ 4158:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { UndiciError } = __nccwpck_require__(2229)
+const { UndiciError } = __nccwpck_require__(9270)
 
 const kMockNotMatchedError = Symbol.for('undici.error.UND_MOCK_ERR_MOCK_NOT_MATCHED')
 
@@ -14883,13 +15000,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 1949:
+/***/ 8222:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { getResponseData, buildKey, addMockDispatch } = __nccwpck_require__(1923)
+const { getResponseData, buildKey, addMockDispatch } = __nccwpck_require__(6948)
 const {
   kDispatches,
   kDispatchKey,
@@ -14897,9 +15014,9 @@ const {
   kDefaultTrailers,
   kContentLength,
   kMockDispatch
-} = __nccwpck_require__(4703)
-const { InvalidArgumentError } = __nccwpck_require__(2229)
-const { buildURL } = __nccwpck_require__(1702)
+} = __nccwpck_require__(1024)
+const { InvalidArgumentError } = __nccwpck_require__(9270)
+const { buildURL } = __nccwpck_require__(4457)
 
 /**
  * Defines the scope API for an interceptor reply
@@ -15098,15 +15215,15 @@ module.exports.MockScope = MockScope
 
 /***/ }),
 
-/***/ 3074:
+/***/ 6495:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { promisify } = __nccwpck_require__(7975)
-const Pool = __nccwpck_require__(3906)
-const { buildMockDispatch } = __nccwpck_require__(1923)
+const Pool = __nccwpck_require__(3761)
+const { buildMockDispatch } = __nccwpck_require__(6948)
 const {
   kDispatches,
   kMockAgent,
@@ -15115,10 +15232,10 @@ const {
   kOrigin,
   kOriginalDispatch,
   kConnected
-} = __nccwpck_require__(4703)
-const { MockInterceptor } = __nccwpck_require__(1949)
-const Symbols = __nccwpck_require__(4469)
-const { InvalidArgumentError } = __nccwpck_require__(2229)
+} = __nccwpck_require__(1024)
+const { MockInterceptor } = __nccwpck_require__(8222)
+const Symbols = __nccwpck_require__(1912)
+const { InvalidArgumentError } = __nccwpck_require__(9270)
 
 /**
  * MockPool provides an API that extends the Pool to influence the mockDispatches.
@@ -15165,7 +15282,7 @@ module.exports = MockPool
 
 /***/ }),
 
-/***/ 4703:
+/***/ 1024:
 /***/ ((module) => {
 
 "use strict";
@@ -15196,21 +15313,21 @@ module.exports = {
 
 /***/ }),
 
-/***/ 1923:
+/***/ 6948:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { MockNotMatchedError } = __nccwpck_require__(3863)
+const { MockNotMatchedError } = __nccwpck_require__(4158)
 const {
   kDispatches,
   kMockAgent,
   kOriginalDispatch,
   kOrigin,
   kGetNetConnect
-} = __nccwpck_require__(4703)
-const { buildURL } = __nccwpck_require__(1702)
+} = __nccwpck_require__(1024)
+const { buildURL } = __nccwpck_require__(4457)
 const { STATUS_CODES } = __nccwpck_require__(7067)
 const {
   types: {
@@ -15571,7 +15688,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 1808:
+/***/ 1651:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -15622,7 +15739,7 @@ module.exports = class PendingInterceptorsFormatter {
 
 /***/ }),
 
-/***/ 3195:
+/***/ 9556:
 /***/ ((module) => {
 
 "use strict";
@@ -15659,7 +15776,7 @@ module.exports = class Pluralizer {
 
 /***/ }),
 
-/***/ 9645:
+/***/ 4462:
 /***/ ((module) => {
 
 "use strict";
@@ -16090,21 +16207,21 @@ module.exports = {
 
 /***/ }),
 
-/***/ 4448:
+/***/ 1939:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kConstruct } = __nccwpck_require__(2619)
-const { urlEquals, getFieldValues } = __nccwpck_require__(8592)
-const { kEnumerableProperty, isDisturbed } = __nccwpck_require__(1702)
-const { webidl } = __nccwpck_require__(8431)
-const { Response, cloneResponse, fromInnerResponse } = __nccwpck_require__(3009)
-const { Request, fromInnerRequest } = __nccwpck_require__(3045)
-const { kState } = __nccwpck_require__(6601)
-const { fetching } = __nccwpck_require__(9640)
-const { urlIsHttpHttpsScheme, createDeferredPromise, readAllBytes } = __nccwpck_require__(2546)
+const { kConstruct } = __nccwpck_require__(2812)
+const { urlEquals, getFieldValues } = __nccwpck_require__(2453)
+const { kEnumerableProperty, isDisturbed } = __nccwpck_require__(4457)
+const { webidl } = __nccwpck_require__(9090)
+const { Response, cloneResponse, fromInnerResponse } = __nccwpck_require__(2536)
+const { Request, fromInnerRequest } = __nccwpck_require__(6454)
+const { kState } = __nccwpck_require__(2082)
+const { fetching } = __nccwpck_require__(831)
+const { urlIsHttpHttpsScheme, createDeferredPromise, readAllBytes } = __nccwpck_require__(5535)
 const assert = __nccwpck_require__(4589)
 
 /**
@@ -16957,16 +17074,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ 7535:
+/***/ 4382:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kConstruct } = __nccwpck_require__(2619)
-const { Cache } = __nccwpck_require__(4448)
-const { webidl } = __nccwpck_require__(8431)
-const { kEnumerableProperty } = __nccwpck_require__(1702)
+const { kConstruct } = __nccwpck_require__(2812)
+const { Cache } = __nccwpck_require__(1939)
+const { webidl } = __nccwpck_require__(9090)
+const { kEnumerableProperty } = __nccwpck_require__(4457)
 
 class CacheStorage {
   /**
@@ -17117,28 +17234,28 @@ module.exports = {
 
 /***/ }),
 
-/***/ 2619:
+/***/ 2812:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 module.exports = {
-  kConstruct: (__nccwpck_require__(4469).kConstruct)
+  kConstruct: (__nccwpck_require__(1912).kConstruct)
 }
 
 
 /***/ }),
 
-/***/ 8592:
+/***/ 2453:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const assert = __nccwpck_require__(4589)
-const { URLSerializer } = __nccwpck_require__(258)
-const { isValidHeaderName } = __nccwpck_require__(2546)
+const { URLSerializer } = __nccwpck_require__(4883)
+const { isValidHeaderName } = __nccwpck_require__(5535)
 
 /**
  * @see https://url.spec.whatwg.org/#concept-url-equals
@@ -17183,7 +17300,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 8382:
+/***/ 8841:
 /***/ ((module) => {
 
 "use strict";
@@ -17203,16 +17320,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ 7707:
+/***/ 9156:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { parseSetCookie } = __nccwpck_require__(1220)
-const { stringify } = __nccwpck_require__(7059)
-const { webidl } = __nccwpck_require__(8431)
-const { Headers } = __nccwpck_require__(3210)
+const { parseSetCookie } = __nccwpck_require__(6583)
+const { stringify } = __nccwpck_require__(1542)
+const { webidl } = __nccwpck_require__(9090)
+const { Headers } = __nccwpck_require__(5057)
 
 /**
  * @typedef {Object} Cookie
@@ -17395,15 +17512,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ 1220:
+/***/ 6583:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { maxNameValuePairSize, maxAttributeValueSize } = __nccwpck_require__(8382)
-const { isCTLExcludingHtab } = __nccwpck_require__(7059)
-const { collectASequenceOfCodePointsFast } = __nccwpck_require__(258)
+const { maxNameValuePairSize, maxAttributeValueSize } = __nccwpck_require__(8841)
+const { isCTLExcludingHtab } = __nccwpck_require__(1542)
+const { collectASequenceOfCodePointsFast } = __nccwpck_require__(4883)
 const assert = __nccwpck_require__(4589)
 
 /**
@@ -17676,32 +17793,25 @@ function parseUnparsedAttributes (unparsedAttributes, cookieAttributeList = {}) 
     // If the attribute-name case-insensitively matches the string
     // "SameSite", the user agent MUST process the cookie-av as follows:
 
-    // 1. Let enforcement be "Default".
-    let enforcement = 'Default'
-
     const attributeValueLowercase = attributeValue.toLowerCase()
-    // 2. If cookie-av's attribute-value is a case-insensitive match for
-    //    "None", set enforcement to "None".
-    if (attributeValueLowercase.includes('none')) {
-      enforcement = 'None'
-    }
 
-    // 3. If cookie-av's attribute-value is a case-insensitive match for
-    //    "Strict", set enforcement to "Strict".
-    if (attributeValueLowercase.includes('strict')) {
-      enforcement = 'Strict'
+    // 1. If cookie-av's attribute-value is a case-insensitive match for
+    //    "None", append an attribute to the cookie-attribute-list with an
+    //    attribute-name of "SameSite" and an attribute-value of "None".
+    if (attributeValueLowercase === 'none') {
+      cookieAttributeList.sameSite = 'None'
+    } else if (attributeValueLowercase === 'strict') {
+      // 2. If cookie-av's attribute-value is a case-insensitive match for
+      //    "Strict", append an attribute to the cookie-attribute-list with
+      //    an attribute-name of "SameSite" and an attribute-value of
+      //    "Strict".
+      cookieAttributeList.sameSite = 'Strict'
+    } else if (attributeValueLowercase === 'lax') {
+      // 3. If cookie-av's attribute-value is a case-insensitive match for
+      //    "Lax", append an attribute to the cookie-attribute-list with an
+      //    attribute-name of "SameSite" and an attribute-value of "Lax".
+      cookieAttributeList.sameSite = 'Lax'
     }
-
-    // 4. If cookie-av's attribute-value is a case-insensitive match for
-    //    "Lax", set enforcement to "Lax".
-    if (attributeValueLowercase.includes('lax')) {
-      enforcement = 'Lax'
-    }
-
-    // 5. Append an attribute to the cookie-attribute-list with an
-    //    attribute-name of "SameSite" and an attribute-value of
-    //    enforcement.
-    cookieAttributeList.sameSite = enforcement
   } else {
     cookieAttributeList.unparsed ??= []
 
@@ -17720,7 +17830,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 7059:
+/***/ 1542:
 /***/ ((module) => {
 
 "use strict";
@@ -18010,13 +18120,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 465:
+/***/ 2892:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 const { Transform } = __nccwpck_require__(7075)
-const { isASCIINumber, isValidLastEventId } = __nccwpck_require__(7869)
+const { isASCIINumber, isValidLastEventId } = __nccwpck_require__(5872)
 
 /**
  * @type {number[]} BOM
@@ -18416,23 +18526,23 @@ module.exports = {
 
 /***/ }),
 
-/***/ 8612:
+/***/ 8207:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { pipeline } = __nccwpck_require__(7075)
-const { fetching } = __nccwpck_require__(9640)
-const { makeRequest } = __nccwpck_require__(3045)
-const { webidl } = __nccwpck_require__(8431)
-const { EventSourceStream } = __nccwpck_require__(465)
-const { parseMIMEType } = __nccwpck_require__(258)
-const { createFastMessageEvent } = __nccwpck_require__(9858)
-const { isNetworkError } = __nccwpck_require__(3009)
-const { delay } = __nccwpck_require__(7869)
-const { kEnumerableProperty } = __nccwpck_require__(1702)
-const { environmentSettingsObject } = __nccwpck_require__(2546)
+const { fetching } = __nccwpck_require__(831)
+const { makeRequest } = __nccwpck_require__(6454)
+const { webidl } = __nccwpck_require__(9090)
+const { EventSourceStream } = __nccwpck_require__(2892)
+const { parseMIMEType } = __nccwpck_require__(4883)
+const { createFastMessageEvent } = __nccwpck_require__(2203)
+const { isNetworkError } = __nccwpck_require__(2536)
+const { delay } = __nccwpck_require__(5872)
+const { kEnumerableProperty } = __nccwpck_require__(4457)
+const { environmentSettingsObject } = __nccwpck_require__(5535)
 
 let experimentalWarned = false
 
@@ -18904,7 +19014,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 7869:
+/***/ 5872:
 /***/ ((module) => {
 
 "use strict";
@@ -18949,13 +19059,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 6110:
+/***/ 6831:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const util = __nccwpck_require__(1702)
+const util = __nccwpck_require__(4457)
 const {
   ReadableStreamFrom,
   isBlobLike,
@@ -18965,16 +19075,16 @@ const {
   fullyReadBody,
   extractMimeType,
   utf8DecodeBytes
-} = __nccwpck_require__(2546)
-const { FormData } = __nccwpck_require__(2044)
-const { kState } = __nccwpck_require__(6601)
-const { webidl } = __nccwpck_require__(8431)
+} = __nccwpck_require__(5535)
+const { FormData } = __nccwpck_require__(6557)
+const { kState } = __nccwpck_require__(2082)
+const { webidl } = __nccwpck_require__(9090)
 const { Blob } = __nccwpck_require__(4573)
 const assert = __nccwpck_require__(4589)
 const { isErrored, isDisturbed } = __nccwpck_require__(7075)
 const { isArrayBuffer } = __nccwpck_require__(3429)
-const { serializeAMimeType } = __nccwpck_require__(258)
-const { multipartFormDataParser } = __nccwpck_require__(7570)
+const { serializeAMimeType } = __nccwpck_require__(4883)
+const { multipartFormDataParser } = __nccwpck_require__(9301)
 let random
 
 try {
@@ -19486,7 +19596,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 381:
+/***/ 578:
 /***/ ((module) => {
 
 "use strict";
@@ -19618,7 +19728,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 258:
+/***/ 4883:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -20370,13 +20480,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3699:
+/***/ 7434:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kConnected, kSize } = __nccwpck_require__(4469)
+const { kConnected, kSize } = __nccwpck_require__(1912)
 
 class CompatWeakRef {
   constructor (value) {
@@ -20424,15 +20534,15 @@ module.exports = function () {
 
 /***/ }),
 
-/***/ 3288:
+/***/ 9261:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { Blob, File } = __nccwpck_require__(4573)
-const { kState } = __nccwpck_require__(6601)
-const { webidl } = __nccwpck_require__(8431)
+const { kState } = __nccwpck_require__(2082)
+const { webidl } = __nccwpck_require__(9090)
 
 // TODO(@KhafraDev): remove
 class FileLike {
@@ -20558,17 +20668,17 @@ module.exports = { FileLike, isFileLike }
 
 /***/ }),
 
-/***/ 7570:
+/***/ 9301:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { isUSVString, bufferToLowerCasedHeaderName } = __nccwpck_require__(1702)
-const { utf8DecodeBytes } = __nccwpck_require__(2546)
-const { HTTP_TOKEN_CODEPOINTS, isomorphicDecode } = __nccwpck_require__(258)
-const { isFileLike } = __nccwpck_require__(3288)
-const { makeEntry } = __nccwpck_require__(2044)
+const { isUSVString, bufferToLowerCasedHeaderName } = __nccwpck_require__(4457)
+const { utf8DecodeBytes } = __nccwpck_require__(5535)
+const { HTTP_TOKEN_CODEPOINTS, isomorphicDecode } = __nccwpck_require__(4883)
+const { isFileLike } = __nccwpck_require__(9261)
+const { makeEntry } = __nccwpck_require__(6557)
 const assert = __nccwpck_require__(4589)
 const { File: NodeFile } = __nccwpck_require__(4573)
 
@@ -21040,17 +21150,17 @@ module.exports = {
 
 /***/ }),
 
-/***/ 2044:
+/***/ 6557:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { isBlobLike, iteratorMixin } = __nccwpck_require__(2546)
-const { kState } = __nccwpck_require__(6601)
-const { kEnumerableProperty } = __nccwpck_require__(1702)
-const { FileLike, isFileLike } = __nccwpck_require__(3288)
-const { webidl } = __nccwpck_require__(8431)
+const { isBlobLike, iteratorMixin } = __nccwpck_require__(5535)
+const { kState } = __nccwpck_require__(2082)
+const { kEnumerableProperty } = __nccwpck_require__(4457)
+const { FileLike, isFileLike } = __nccwpck_require__(9261)
+const { webidl } = __nccwpck_require__(9090)
 const { File: NativeFile } = __nccwpck_require__(4573)
 const nodeUtil = __nccwpck_require__(7975)
 
@@ -21300,7 +21410,7 @@ module.exports = { FormData, makeEntry }
 
 /***/ }),
 
-/***/ 561:
+/***/ 3424:
 /***/ ((module) => {
 
 "use strict";
@@ -21348,7 +21458,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3210:
+/***/ 5057:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -21356,14 +21466,14 @@ module.exports = {
 
 
 
-const { kConstruct } = __nccwpck_require__(4469)
-const { kEnumerableProperty } = __nccwpck_require__(1702)
+const { kConstruct } = __nccwpck_require__(1912)
+const { kEnumerableProperty } = __nccwpck_require__(4457)
 const {
   iteratorMixin,
   isValidHeaderName,
   isValidHeaderValue
-} = __nccwpck_require__(2546)
-const { webidl } = __nccwpck_require__(8431)
+} = __nccwpck_require__(5535)
+const { webidl } = __nccwpck_require__(9090)
 const assert = __nccwpck_require__(4589)
 const util = __nccwpck_require__(7975)
 
@@ -22043,7 +22153,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9640:
+/***/ 831:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -22057,9 +22167,9 @@ const {
   filterResponse,
   makeResponse,
   fromInnerResponse
-} = __nccwpck_require__(3009)
-const { HeadersList } = __nccwpck_require__(3210)
-const { Request, cloneRequest } = __nccwpck_require__(3045)
+} = __nccwpck_require__(2536)
+const { HeadersList } = __nccwpck_require__(5057)
+const { Request, cloneRequest } = __nccwpck_require__(6454)
 const zlib = __nccwpck_require__(8522)
 const {
   bytesMatch,
@@ -22095,23 +22205,23 @@ const {
   buildContentRange,
   createInflate,
   extractMimeType
-} = __nccwpck_require__(2546)
-const { kState, kDispatcher } = __nccwpck_require__(6601)
+} = __nccwpck_require__(5535)
+const { kState, kDispatcher } = __nccwpck_require__(2082)
 const assert = __nccwpck_require__(4589)
-const { safelyExtractBody, extractBody } = __nccwpck_require__(6110)
+const { safelyExtractBody, extractBody } = __nccwpck_require__(6831)
 const {
   redirectStatusSet,
   nullBodyStatus,
   safeMethodsSet,
   requestBodyHeader,
   subresourceSet
-} = __nccwpck_require__(381)
+} = __nccwpck_require__(578)
 const EE = __nccwpck_require__(8474)
 const { Readable, pipeline, finished } = __nccwpck_require__(7075)
-const { addAbortListener, isErrored, isReadable, bufferToLowerCasedHeaderName } = __nccwpck_require__(1702)
-const { dataURLProcessor, serializeAMimeType, minimizeSupportedMimeType } = __nccwpck_require__(258)
-const { getGlobalDispatcher } = __nccwpck_require__(2603)
-const { webidl } = __nccwpck_require__(8431)
+const { addAbortListener, isErrored, isReadable, bufferToLowerCasedHeaderName } = __nccwpck_require__(4457)
+const { dataURLProcessor, serializeAMimeType, minimizeSupportedMimeType } = __nccwpck_require__(4883)
+const { getGlobalDispatcher } = __nccwpck_require__(9098)
+const { webidl } = __nccwpck_require__(9090)
 const { STATUS_CODES } = __nccwpck_require__(7067)
 const GET_OR_HEAD = ['GET', 'HEAD']
 
@@ -24323,7 +24433,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3045:
+/***/ 6454:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -24331,16 +24441,16 @@ module.exports = {
 
 
 
-const { extractBody, mixinBody, cloneBody, bodyUnusable } = __nccwpck_require__(6110)
-const { Headers, fill: fillHeaders, HeadersList, setHeadersGuard, getHeadersGuard, setHeadersList, getHeadersList } = __nccwpck_require__(3210)
-const { FinalizationRegistry } = __nccwpck_require__(3699)()
-const util = __nccwpck_require__(1702)
+const { extractBody, mixinBody, cloneBody, bodyUnusable } = __nccwpck_require__(6831)
+const { Headers, fill: fillHeaders, HeadersList, setHeadersGuard, getHeadersGuard, setHeadersList, getHeadersList } = __nccwpck_require__(5057)
+const { FinalizationRegistry } = __nccwpck_require__(7434)()
+const util = __nccwpck_require__(4457)
 const nodeUtil = __nccwpck_require__(7975)
 const {
   isValidHTTPToken,
   sameOrigin,
   environmentSettingsObject
-} = __nccwpck_require__(2546)
+} = __nccwpck_require__(5535)
 const {
   forbiddenMethodsSet,
   corsSafeListedMethodsSet,
@@ -24350,12 +24460,12 @@ const {
   requestCredentials,
   requestCache,
   requestDuplex
-} = __nccwpck_require__(381)
+} = __nccwpck_require__(578)
 const { kEnumerableProperty, normalizedMethodRecordsBase, normalizedMethodRecords } = util
-const { kHeaders, kSignal, kState, kDispatcher } = __nccwpck_require__(6601)
-const { webidl } = __nccwpck_require__(8431)
-const { URLSerializer } = __nccwpck_require__(258)
-const { kConstruct } = __nccwpck_require__(4469)
+const { kHeaders, kSignal, kState, kDispatcher } = __nccwpck_require__(2082)
+const { webidl } = __nccwpck_require__(9090)
+const { URLSerializer } = __nccwpck_require__(4883)
+const { kConstruct } = __nccwpck_require__(1912)
 const assert = __nccwpck_require__(4589)
 const { getMaxListeners, setMaxListeners, getEventListeners, defaultMaxListeners } = __nccwpck_require__(8474)
 
@@ -25368,15 +25478,15 @@ module.exports = { Request, makeRequest, fromInnerRequest, cloneRequest }
 
 /***/ }),
 
-/***/ 3009:
+/***/ 2536:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Headers, HeadersList, fill, getHeadersGuard, setHeadersGuard, setHeadersList } = __nccwpck_require__(3210)
-const { extractBody, cloneBody, mixinBody, hasFinalizationRegistry, streamRegistry, bodyUnusable } = __nccwpck_require__(6110)
-const util = __nccwpck_require__(1702)
+const { Headers, HeadersList, fill, getHeadersGuard, setHeadersGuard, setHeadersList } = __nccwpck_require__(5057)
+const { extractBody, cloneBody, mixinBody, hasFinalizationRegistry, streamRegistry, bodyUnusable } = __nccwpck_require__(6831)
+const util = __nccwpck_require__(4457)
 const nodeUtil = __nccwpck_require__(7975)
 const { kEnumerableProperty } = util
 const {
@@ -25388,16 +25498,16 @@ const {
   isErrorLike,
   isomorphicEncode,
   environmentSettingsObject: relevantRealm
-} = __nccwpck_require__(2546)
+} = __nccwpck_require__(5535)
 const {
   redirectStatusSet,
   nullBodyStatus
-} = __nccwpck_require__(381)
-const { kState, kHeaders } = __nccwpck_require__(6601)
-const { webidl } = __nccwpck_require__(8431)
-const { FormData } = __nccwpck_require__(2044)
-const { URLSerializer } = __nccwpck_require__(258)
-const { kConstruct } = __nccwpck_require__(4469)
+} = __nccwpck_require__(578)
+const { kState, kHeaders } = __nccwpck_require__(2082)
+const { webidl } = __nccwpck_require__(9090)
+const { FormData } = __nccwpck_require__(6557)
+const { URLSerializer } = __nccwpck_require__(4883)
+const { kConstruct } = __nccwpck_require__(1912)
 const assert = __nccwpck_require__(4589)
 const { types } = __nccwpck_require__(7975)
 
@@ -25986,7 +26096,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 6601:
+/***/ 2082:
 /***/ ((module) => {
 
 "use strict";
@@ -26003,7 +26113,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 2546:
+/***/ 5535:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -26011,14 +26121,14 @@ module.exports = {
 
 const { Transform } = __nccwpck_require__(7075)
 const zlib = __nccwpck_require__(8522)
-const { redirectStatusSet, referrerPolicySet: referrerPolicyTokens, badPortsSet } = __nccwpck_require__(381)
-const { getGlobalOrigin } = __nccwpck_require__(561)
-const { collectASequenceOfCodePoints, collectAnHTTPQuotedString, removeChars, parseMIMEType } = __nccwpck_require__(258)
+const { redirectStatusSet, referrerPolicySet: referrerPolicyTokens, badPortsSet } = __nccwpck_require__(578)
+const { getGlobalOrigin } = __nccwpck_require__(3424)
+const { collectASequenceOfCodePoints, collectAnHTTPQuotedString, removeChars, parseMIMEType } = __nccwpck_require__(4883)
 const { performance } = __nccwpck_require__(643)
-const { isBlobLike, ReadableStreamFrom, isValidHTTPToken, normalizedMethodRecordsBase } = __nccwpck_require__(1702)
+const { isBlobLike, ReadableStreamFrom, isValidHTTPToken, normalizedMethodRecordsBase } = __nccwpck_require__(4457)
 const assert = __nccwpck_require__(4589)
 const { isUint8Array } = __nccwpck_require__(3429)
-const { webidl } = __nccwpck_require__(8431)
+const { webidl } = __nccwpck_require__(9090)
 
 let supportedHashes = []
 
@@ -27643,7 +27753,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 8431:
+/***/ 9090:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -27651,7 +27761,7 @@ module.exports = {
 
 const { types, inspect } = __nccwpck_require__(7975)
 const { markAsUncloneable } = __nccwpck_require__(5919)
-const { toUSVString } = __nccwpck_require__(1702)
+const { toUSVString } = __nccwpck_require__(4457)
 
 /** @type {import('../../../types/webidl').Webidl} */
 const webidl = {}
@@ -28346,7 +28456,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 8249:
+/***/ 4560:
 /***/ ((module) => {
 
 "use strict";
@@ -28644,7 +28754,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3453:
+/***/ 5556:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -28654,16 +28764,16 @@ const {
   staticPropertyDescriptors,
   readOperation,
   fireAProgressEvent
-} = __nccwpck_require__(9176)
+} = __nccwpck_require__(5665)
 const {
   kState,
   kError,
   kResult,
   kEvents,
   kAborted
-} = __nccwpck_require__(3747)
-const { webidl } = __nccwpck_require__(8431)
-const { kEnumerableProperty } = __nccwpck_require__(1702)
+} = __nccwpck_require__(1184)
+const { webidl } = __nccwpck_require__(9090)
+const { kEnumerableProperty } = __nccwpck_require__(4457)
 
 class FileReader extends EventTarget {
   constructor () {
@@ -28996,13 +29106,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9759:
+/***/ 1044:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { webidl } = __nccwpck_require__(8431)
+const { webidl } = __nccwpck_require__(9090)
 
 const kState = Symbol('ProgressEvent state')
 
@@ -29082,7 +29192,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3747:
+/***/ 1184:
 /***/ ((module) => {
 
 "use strict";
@@ -29100,7 +29210,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9176:
+/***/ 5665:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -29112,10 +29222,10 @@ const {
   kResult,
   kAborted,
   kLastProgressEventFired
-} = __nccwpck_require__(3747)
-const { ProgressEvent } = __nccwpck_require__(9759)
-const { getEncoding } = __nccwpck_require__(8249)
-const { serializeAMimeType, parseMIMEType } = __nccwpck_require__(258)
+} = __nccwpck_require__(1184)
+const { ProgressEvent } = __nccwpck_require__(1044)
+const { getEncoding } = __nccwpck_require__(4560)
+const { serializeAMimeType, parseMIMEType } = __nccwpck_require__(4883)
 const { types } = __nccwpck_require__(7975)
 const { StringDecoder } = __nccwpck_require__(3193)
 const { btoa } = __nccwpck_require__(4573)
@@ -29499,28 +29609,28 @@ module.exports = {
 
 /***/ }),
 
-/***/ 1852:
+/***/ 2882:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { uid, states, sentCloseFrameState, emptyBuffer, opcodes } = __nccwpck_require__(5958)
+const { uid, states, sentCloseFrameState, emptyBuffer, opcodes } = __nccwpck_require__(541)
 const {
   kReadyState,
   kSentClose,
   kByteParser,
   kReceivedClose,
   kResponse
-} = __nccwpck_require__(8982)
-const { fireEvent, failWebsocketConnection, isClosing, isClosed, isEstablished, parseExtensions } = __nccwpck_require__(9083)
-const { channels } = __nccwpck_require__(9304)
-const { CloseEvent } = __nccwpck_require__(9858)
-const { makeRequest } = __nccwpck_require__(3045)
-const { fetching } = __nccwpck_require__(9640)
-const { Headers, getHeadersList } = __nccwpck_require__(3210)
-const { getDecodeSplit } = __nccwpck_require__(2546)
-const { WebsocketFrameSend } = __nccwpck_require__(7854)
+} = __nccwpck_require__(7193)
+const { fireEvent, failWebsocketConnection, isClosing, isClosed, isEstablished, parseExtensions } = __nccwpck_require__(5122)
+const { channels } = __nccwpck_require__(3677)
+const { CloseEvent } = __nccwpck_require__(2203)
+const { makeRequest } = __nccwpck_require__(6454)
+const { fetching } = __nccwpck_require__(831)
+const { Headers, getHeadersList } = __nccwpck_require__(5057)
+const { getDecodeSplit } = __nccwpck_require__(5535)
+const { WebsocketFrameSend } = __nccwpck_require__(1481)
 
 /** @type {import('crypto')} */
 let crypto
@@ -29878,7 +29988,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 5958:
+/***/ 541:
 /***/ ((module) => {
 
 "use strict";
@@ -29952,15 +30062,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9858:
+/***/ 2203:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { webidl } = __nccwpck_require__(8431)
-const { kEnumerableProperty } = __nccwpck_require__(1702)
-const { kConstruct } = __nccwpck_require__(4469)
+const { webidl } = __nccwpck_require__(9090)
+const { kEnumerableProperty } = __nccwpck_require__(4457)
+const { kConstruct } = __nccwpck_require__(1912)
 const { MessagePort } = __nccwpck_require__(5919)
 
 /**
@@ -30289,13 +30399,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 7854:
+/***/ 1481:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { maxUnsigned16Bit } = __nccwpck_require__(5958)
+const { maxUnsigned16Bit } = __nccwpck_require__(541)
 
 const BUFFER_SIZE = 16386
 
@@ -30393,15 +30503,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ 1547:
+/***/ 6190:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { createInflateRaw, Z_DEFAULT_WINDOWBITS } = __nccwpck_require__(8522)
-const { isValidClientWindowBits } = __nccwpck_require__(9083)
-const { MessageSizeExceededError } = __nccwpck_require__(2229)
+const { isValidClientWindowBits } = __nccwpck_require__(5122)
+const { MessageSizeExceededError } = __nccwpck_require__(9270)
 
 const tail = Buffer.from([0x00, 0x00, 0xff, 0xff])
 const kBuffer = Symbol('kBuffer')
@@ -30501,7 +30611,7 @@ module.exports = { PerMessageDeflate }
 
 /***/ }),
 
-/***/ 3838:
+/***/ 8359:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -30509,9 +30619,9 @@ module.exports = { PerMessageDeflate }
 
 const { Writable } = __nccwpck_require__(7075)
 const assert = __nccwpck_require__(4589)
-const { parserStates, opcodes, states, emptyBuffer, sentCloseFrameState } = __nccwpck_require__(5958)
-const { kReadyState, kSentClose, kResponse, kReceivedClose } = __nccwpck_require__(8982)
-const { channels } = __nccwpck_require__(9304)
+const { parserStates, opcodes, states, emptyBuffer, sentCloseFrameState } = __nccwpck_require__(541)
+const { kReadyState, kSentClose, kResponse, kReceivedClose } = __nccwpck_require__(7193)
+const { channels } = __nccwpck_require__(3677)
 const {
   isValidStatusCode,
   isValidOpcode,
@@ -30521,11 +30631,16 @@ const {
   isControlFrame,
   isTextBinaryFrame,
   isContinuationFrame
-} = __nccwpck_require__(9083)
-const { WebsocketFrameSend } = __nccwpck_require__(7854)
-const { closeWebSocketConnection } = __nccwpck_require__(1852)
-const { PerMessageDeflate } = __nccwpck_require__(1547)
-const { MessageSizeExceededError } = __nccwpck_require__(2229)
+} = __nccwpck_require__(5122)
+const { WebsocketFrameSend } = __nccwpck_require__(1481)
+const { closeWebSocketConnection } = __nccwpck_require__(2882)
+const { PerMessageDeflate } = __nccwpck_require__(6190)
+const { MessageSizeExceededError } = __nccwpck_require__(9270)
+
+function failWebsocketConnectionWithCode (ws, code, reason) {
+  closeWebSocketConnection(ws, code, reason, Buffer.byteLength(reason))
+  failWebsocketConnection(ws, reason)
+}
 
 // This code was influenced by ws released under the MIT license.
 // Copyright (c) 2011 Einar Otto Stangvik <einaros@gmail.com>
@@ -30547,18 +30662,22 @@ class ByteParser extends Writable {
   #extensions
 
   /** @type {number} */
+  #maxFragments
+
+  /** @type {number} */
   #maxPayloadSize
 
   /**
    * @param {import('./websocket').WebSocket} ws
    * @param {Map<string, string>|null} extensions
-   * @param {{ maxPayloadSize?: number }} [options]
+   * @param {{ maxFragments?: number, maxPayloadSize?: number }} [options]
    */
   constructor (ws, extensions, options = {}) {
     super()
 
     this.ws = ws
     this.#extensions = extensions == null ? new Map() : extensions
+    this.#maxFragments = options.maxFragments ?? 0
     this.#maxPayloadSize = options.maxPayloadSize ?? 0
 
     if (this.#extensions.has('permessage-deflate')) {
@@ -30582,9 +30701,9 @@ class ByteParser extends Writable {
     if (
       this.#maxPayloadSize > 0 &&
       !isControlFrame(this.#info.opcode) &&
-      this.#info.payloadLength > this.#maxPayloadSize
+      this.#info.payloadLength + this.#fragmentsBytes > this.#maxPayloadSize
     ) {
-      failWebsocketConnection(this.ws, 'Payload size exceeds maximum allowed size')
+      failWebsocketConnectionWithCode(this.ws, 1009, 'Payload size exceeds maximum allowed size')
       return false
     }
 
@@ -30749,10 +30868,12 @@ class ByteParser extends Writable {
           this.#state = parserStates.INFO
         } else {
           if (!this.#info.compressed) {
-            this.writeFragments(body)
+            if (!this.writeFragments(body)) {
+              return
+            }
 
             if (this.#maxPayloadSize > 0 && this.#fragmentsBytes > this.#maxPayloadSize) {
-              failWebsocketConnection(this.ws, new MessageSizeExceededError().message)
+              failWebsocketConnectionWithCode(this.ws, 1009, new MessageSizeExceededError().message)
               return
             }
 
@@ -30771,14 +30892,17 @@ class ByteParser extends Writable {
               this.#info.fin,
               (error, data) => {
                 if (error) {
-                  failWebsocketConnection(this.ws, error.message)
+                  const code = error instanceof MessageSizeExceededError ? 1009 : 1007
+                  failWebsocketConnectionWithCode(this.ws, code, error.message)
                   return
                 }
 
-                this.writeFragments(data)
+                if (!this.writeFragments(data)) {
+                  return
+                }
 
                 if (this.#maxPayloadSize > 0 && this.#fragmentsBytes > this.#maxPayloadSize) {
-                  failWebsocketConnection(this.ws, new MessageSizeExceededError().message)
+                  failWebsocketConnectionWithCode(this.ws, 1009, new MessageSizeExceededError().message)
                   return
                 }
 
@@ -30848,8 +30972,17 @@ class ByteParser extends Writable {
   }
 
   writeFragments (fragment) {
+    if (
+      this.#maxFragments > 0 &&
+      this.#fragments.length === this.#maxFragments
+    ) {
+      failWebsocketConnectionWithCode(this.ws, 1008, 'Too many message fragments')
+      return false
+    }
+
     this.#fragmentsBytes += fragment.length
     this.#fragments.push(fragment)
+    return true
   }
 
   consumeFragments () {
@@ -30999,15 +31132,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ 2354:
+/***/ 8323:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { WebsocketFrameSend } = __nccwpck_require__(7854)
-const { opcodes, sendHints } = __nccwpck_require__(5958)
-const FixedQueue = __nccwpck_require__(50)
+const { WebsocketFrameSend } = __nccwpck_require__(1481)
+const { opcodes, sendHints } = __nccwpck_require__(541)
+const FixedQueue = __nccwpck_require__(8591)
 
 /** @type {typeof Uint8Array} */
 const FastBuffer = Buffer[Symbol.species]
@@ -31111,7 +31244,7 @@ module.exports = { SendQueue }
 
 /***/ }),
 
-/***/ 8982:
+/***/ 7193:
 /***/ ((module) => {
 
 "use strict";
@@ -31131,17 +31264,17 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9083:
+/***/ 5122:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kReadyState, kController, kResponse, kBinaryType, kWebSocketURL } = __nccwpck_require__(8982)
-const { states, opcodes } = __nccwpck_require__(5958)
-const { ErrorEvent, createFastMessageEvent } = __nccwpck_require__(9858)
+const { kReadyState, kController, kResponse, kBinaryType, kWebSocketURL } = __nccwpck_require__(7193)
+const { states, opcodes } = __nccwpck_require__(541)
+const { ErrorEvent, createFastMessageEvent } = __nccwpck_require__(2203)
 const { isUtf8 } = __nccwpck_require__(4573)
-const { collectASequenceOfCodePointsFast, removeHTTPWhitespace } = __nccwpck_require__(258)
+const { collectASequenceOfCodePointsFast, removeHTTPWhitespace } = __nccwpck_require__(4883)
 
 /* globals Blob */
 
@@ -31461,16 +31594,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3380:
+/***/ 7799:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { webidl } = __nccwpck_require__(8431)
-const { URLSerializer } = __nccwpck_require__(258)
-const { environmentSettingsObject } = __nccwpck_require__(2546)
-const { staticPropertyDescriptors, states, sentCloseFrameState, sendHints } = __nccwpck_require__(5958)
+const { webidl } = __nccwpck_require__(9090)
+const { URLSerializer } = __nccwpck_require__(4883)
+const { environmentSettingsObject } = __nccwpck_require__(5535)
+const { staticPropertyDescriptors, states, sentCloseFrameState, sendHints } = __nccwpck_require__(541)
 const {
   kWebSocketURL,
   kReadyState,
@@ -31479,21 +31612,21 @@ const {
   kResponse,
   kSentClose,
   kByteParser
-} = __nccwpck_require__(8982)
+} = __nccwpck_require__(7193)
 const {
   isConnecting,
   isEstablished,
   isClosing,
   isValidSubprotocol,
   fireEvent
-} = __nccwpck_require__(9083)
-const { establishWebSocketConnection, closeWebSocketConnection } = __nccwpck_require__(1852)
-const { ByteParser } = __nccwpck_require__(3838)
-const { kEnumerableProperty, isBlobLike } = __nccwpck_require__(1702)
-const { getGlobalDispatcher } = __nccwpck_require__(2603)
+} = __nccwpck_require__(5122)
+const { establishWebSocketConnection, closeWebSocketConnection } = __nccwpck_require__(2882)
+const { ByteParser } = __nccwpck_require__(8359)
+const { kEnumerableProperty, isBlobLike } = __nccwpck_require__(4457)
+const { getGlobalDispatcher } = __nccwpck_require__(9098)
 const { types } = __nccwpck_require__(7975)
-const { ErrorEvent, CloseEvent } = __nccwpck_require__(9858)
-const { SendQueue } = __nccwpck_require__(2354)
+const { ErrorEvent, CloseEvent } = __nccwpck_require__(2203)
+const { SendQueue } = __nccwpck_require__(8323)
 
 // https://websockets.spec.whatwg.org/#interface-definition
 class WebSocket extends EventTarget {
@@ -31902,9 +32035,12 @@ class WebSocket extends EventTarget {
     // once this happens, the connection is open
     this[kResponse] = response
 
-    const maxPayloadSize = this[kController]?.dispatcher?.webSocketOptions?.maxPayloadSize
+    const webSocketOptions = this[kController]?.dispatcher?.webSocketOptions
+    const maxFragments = webSocketOptions?.maxFragments
+    const maxPayloadSize = webSocketOptions?.maxPayloadSize
 
     const parser = new ByteParser(this, parsedExtensions, {
+      maxFragments,
       maxPayloadSize
     })
     parser.on('drain', onParserDrain)
@@ -32061,7 +32197,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9084:
+/***/ 8051:
 /***/ ((module) => {
 
 module.exports = {
@@ -32079,15 +32215,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ 8014:
+/***/ 6103:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 /*jslint node:true */
 
-var xml2js = __nccwpck_require__(506);
-var xml2json = __nccwpck_require__(2963);
-var js2xml = __nccwpck_require__(8276);
-var json2xml = __nccwpck_require__(6513);
+var xml2js = __nccwpck_require__(3029);
+var xml2json = __nccwpck_require__(8643);
+var js2xml = __nccwpck_require__(8279);
+var json2xml = __nccwpck_require__(4150);
 
 module.exports = {
   xml2js: xml2js,
@@ -32099,11 +32235,11 @@ module.exports = {
 
 /***/ }),
 
-/***/ 8276:
+/***/ 8279:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var helper = __nccwpck_require__(7577);
-var isArray = (__nccwpck_require__(9084).isArray);
+var helper = __nccwpck_require__(2358);
+var isArray = (__nccwpck_require__(8051).isArray);
 
 var currentElement, currentElementName;
 
@@ -32426,10 +32562,10 @@ module.exports = function (js, options) {
 
 /***/ }),
 
-/***/ 6513:
+/***/ 4150:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var js2xml = __nccwpck_require__(8276);
+var js2xml = __nccwpck_require__(8279);
 
 module.exports = function (json, options) {
   if (json instanceof Buffer) {
@@ -32451,10 +32587,10 @@ module.exports = function (json, options) {
 
 /***/ }),
 
-/***/ 7577:
+/***/ 2358:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var isArray = (__nccwpck_require__(9084).isArray);
+var isArray = (__nccwpck_require__(8051).isArray);
 
 module.exports = {
 
@@ -32501,13 +32637,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 506:
+/***/ 3029:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var sax = __nccwpck_require__(7316);
+var sax = __nccwpck_require__(2251);
 var expat /*= require('node-expat');*/ = { on: function () { }, parse: function () { } };
-var helper = __nccwpck_require__(7577);
-var isArray = (__nccwpck_require__(9084).isArray);
+var helper = __nccwpck_require__(2358);
+var isArray = (__nccwpck_require__(8051).isArray);
 
 var options;
 var pureJsParser = true;
@@ -32870,11 +33006,11 @@ module.exports = function (xml, userOptions) {
 
 /***/ }),
 
-/***/ 2963:
+/***/ 8643:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var helper = __nccwpck_require__(7577);
-var xml2js = __nccwpck_require__(506);
+var helper = __nccwpck_require__(2358);
+var xml2js = __nccwpck_require__(3029);
 
 function validateOptions (userOptions) {
   var options = helper.copyOptions(userOptions);
@@ -33099,7 +33235,7 @@ module.exports = require("node:zlib");
 
 /***/ }),
 
-/***/ 2203:
+/***/ 4584:
 /***/ ((module) => {
 
 "use strict";
@@ -33131,181 +33267,181 @@ module.exports = require("util");
 
 /***/ }),
 
-/***/ 975:
-/***/ ((module) => {
+/***/ 644:
+/***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 var __webpack_unused_export__;
 
-
-const NullObject = function NullObject () { }
-NullObject.prototype = Object.create(null)
-
-/**
- * RegExp to match *( ";" parameter ) in RFC 7231 sec 3.1.1.1
- *
- * parameter     = token "=" ( token / quoted-string )
- * token         = 1*tchar
- * tchar         = "!" / "#" / "$" / "%" / "&" / "'" / "*"
- *               / "+" / "-" / "." / "^" / "_" / "`" / "|" / "~"
- *               / DIGIT / ALPHA
- *               ; any VCHAR, except delimiters
- * quoted-string = DQUOTE *( qdtext / quoted-pair ) DQUOTE
- * qdtext        = HTAB / SP / %x21 / %x23-5B / %x5D-7E / obs-text
- * obs-text      = %x80-FF
- * quoted-pair   = "\" ( HTAB / SP / VCHAR / obs-text )
+/*!
+ * content-type
+ * Copyright(c) 2015 Douglas Christopher Wilson
+ * MIT Licensed
  */
-const paramRE = /; *([!#$%&'*+.^\w`|~-]+)=("(?:[\v\u0020\u0021\u0023-\u005b\u005d-\u007e\u0080-\u00ff]|\\[\v\u0020-\u00ff])*"|[!#$%&'*+.^\w`|~-]+) */gu
-
+__webpack_unused_export__ = ({ value: true });
+__webpack_unused_export__ = format;
+exports.qg = parse;
+const TEXT_REGEXP = /^[\u0009\u0020-\u007e\u0080-\u00ff]*$/;
+const TOKEN_REGEXP = /^[!#$%&'*+.^_`|~0-9A-Za-z-]+$/;
 /**
- * RegExp to match quoted-pair in RFC 7230 sec 3.2.6
- *
- * quoted-pair = "\" ( HTAB / SP / VCHAR / obs-text )
- * obs-text    = %x80-FF
+ * RegExp to match chars that must be quoted-pair in RFC 9110 sec 5.6.4
  */
-const quotedPairRE = /\\([\v\u0020-\u00ff])/gu
-
+const QUOTE_REGEXP = /[\\"]/g;
 /**
- * RegExp to match type in RFC 7231 sec 3.1.1.1
+ * RegExp to match type in RFC 9110 sec 8.3.1
  *
  * media-type = type "/" subtype
  * type       = token
  * subtype    = token
  */
-const mediaTypeRE = /^[!#$%&'*+.^\w|~-]+\/[!#$%&'*+.^\w|~-]+$/u
-
-// default ContentType to prevent repeated object creation
-const defaultContentType = { type: '', parameters: new NullObject() }
-Object.freeze(defaultContentType.parameters)
-Object.freeze(defaultContentType)
-
+const TYPE_REGEXP = /^[!#$%&'*+.^_`|~0-9A-Za-z-]+\/[!#$%&'*+.^_`|~0-9A-Za-z-]+$/;
 /**
- * Parse media type to object.
- *
- * @param {string|object} header
- * @return {Object}
- * @public
+ * Null object perf optimization. Faster than `Object.create(null)` and `{ __proto__: null }`.
  */
-
-function parse (header) {
-  if (typeof header !== 'string') {
-    throw new TypeError('argument header is required and must be a string')
-  }
-
-  let index = header.indexOf(';')
-  const type = index !== -1
-    ? header.slice(0, index).trim()
-    : header.trim()
-
-  if (mediaTypeRE.test(type) === false) {
-    throw new TypeError('invalid media type')
-  }
-
-  const result = {
-    type: type.toLowerCase(),
-    parameters: new NullObject()
-  }
-
-  // parse parameters
-  if (index === -1) {
-    return result
-  }
-
-  let key
-  let match
-  let value
-
-  paramRE.lastIndex = index
-
-  while ((match = paramRE.exec(header))) {
-    if (match.index !== index) {
-      throw new TypeError('invalid parameter format')
+const NullObject = /* @__PURE__ */ (() => {
+    const C = function () { };
+    C.prototype = Object.create(null);
+    return C;
+})();
+/**
+ * Format an object into a `Content-Type` header.
+ */
+function format(obj) {
+    const { type, parameters } = obj;
+    if (!type || !TYPE_REGEXP.test(type)) {
+        throw new TypeError(`Invalid type: ${type}`);
     }
-
-    index += match[0].length
-    key = match[1].toLowerCase()
-    value = match[2]
-
-    if (value[0] === '"') {
-      // remove quotes and escapes
-      value = value
-        .slice(1, value.length - 1)
-
-      quotedPairRE.test(value) && (value = value.replace(quotedPairRE, '$1'))
+    let result = type;
+    if (parameters) {
+        for (const param of Object.keys(parameters)) {
+            if (!TOKEN_REGEXP.test(param)) {
+                throw new TypeError(`Invalid parameter name: ${param}`);
+            }
+            result += `; ${param}=${qstring(parameters[param])}`;
+        }
     }
-
-    result.parameters[key] = value
-  }
-
-  if (index !== header.length) {
-    throw new TypeError('invalid parameter format')
-  }
-
-  return result
+    return result;
 }
-
-function safeParse (header) {
-  if (typeof header !== 'string') {
-    return defaultContentType
-  }
-
-  let index = header.indexOf(';')
-  const type = index !== -1
-    ? header.slice(0, index).trim()
-    : header.trim()
-
-  if (mediaTypeRE.test(type) === false) {
-    return defaultContentType
-  }
-
-  const result = {
-    type: type.toLowerCase(),
-    parameters: new NullObject()
-  }
-
-  // parse parameters
-  if (index === -1) {
-    return result
-  }
-
-  let key
-  let match
-  let value
-
-  paramRE.lastIndex = index
-
-  while ((match = paramRE.exec(header))) {
-    if (match.index !== index) {
-      return defaultContentType
-    }
-
-    index += match[0].length
-    key = match[1].toLowerCase()
-    value = match[2]
-
-    if (value[0] === '"') {
-      // remove quotes and escapes
-      value = value
-        .slice(1, value.length - 1)
-
-      quotedPairRE.test(value) && (value = value.replace(quotedPairRE, '$1'))
-    }
-
-    result.parameters[key] = value
-  }
-
-  if (index !== header.length) {
-    return defaultContentType
-  }
-
-  return result
+/**
+ * Parse a `Content-Type` header.
+ */
+function parse(header, options) {
+    const len = header.length;
+    let index = skipOWS(header, 0, len);
+    const valueStart = index;
+    index = skipValue(header, index, len);
+    const valueEnd = trailingOWS(header, valueStart, index);
+    const type = header.slice(valueStart, valueEnd).toLowerCase();
+    const parameters = options?.parameters === false
+        ? new NullObject()
+        : parseParameters(header, index, len);
+    return { type, parameters };
 }
-
-__webpack_unused_export__ = { parse, safeParse }
-__webpack_unused_export__ = parse
-module.exports.xL = safeParse
-__webpack_unused_export__ = defaultContentType
-
+const SP = 32; // " "
+const HTAB = 9; // "\t"
+const SEMI = 59; // ";"
+const EQ = 61; // "="
+const DQUOTE = 34; // '"'
+const BSLASH = 92; // "\\"
+/**
+ * Parses the parameters of a `Content-Type` header starting at the given index.
+ */
+function parseParameters(header, index, len) {
+    const parameters = new NullObject();
+    parameter: while (index < len) {
+        index = skipOWS(header, index + 1 /* Skip over ; */, len);
+        const keyStart = index;
+        while (index < len) {
+            const code = header.charCodeAt(index);
+            if (code === SEMI)
+                continue parameter;
+            if (code === EQ) {
+                const keyEnd = trailingOWS(header, keyStart, index);
+                const key = header.slice(keyStart, keyEnd).toLowerCase();
+                index = skipOWS(header, index + 1, len);
+                if (index < len && header.charCodeAt(index) === DQUOTE) {
+                    index++;
+                    let value = "";
+                    while (index < len) {
+                        const code = header.charCodeAt(index++);
+                        if (code === DQUOTE) {
+                            index = skipValue(header, index, len);
+                            if (parameters[key] === undefined)
+                                parameters[key] = value;
+                            break;
+                        }
+                        if (code === BSLASH && index < len) {
+                            value += header[index++];
+                            continue;
+                        }
+                        value += String.fromCharCode(code);
+                    }
+                    continue parameter;
+                }
+                const valueStart = index;
+                index = skipValue(header, index, len);
+                if (parameters[key] === undefined) {
+                    const valueEnd = trailingOWS(header, valueStart, index);
+                    parameters[key] = header.slice(valueStart, valueEnd);
+                }
+                continue parameter;
+            }
+            index++;
+        }
+    }
+    return parameters;
+}
+/**
+ * Skip over characters until a semicolon.
+ */
+function skipValue(str, index, len) {
+    while (index < len) {
+        const char = str.charCodeAt(index);
+        if (char === SEMI)
+            break;
+        index++;
+    }
+    return index;
+}
+/**
+ * Skip optional whitespace (OWS) in an HTTP header value.
+ *
+ * OWS is defined in RFC 9110 sec 5.6.3 as SP (" ") or HTAB ("\t").
+ */
+function skipOWS(header, index, len) {
+    while (index < len) {
+        const char = header.charCodeAt(index);
+        if (char !== SP && char !== HTAB)
+            break;
+        index++;
+    }
+    return index;
+}
+/**
+ * Trim optional whitespace (OWS) from the end of a substring.
+ *
+ * OWS is defined in RFC 9110 sec 5.6.3 as SP (" ") or HTAB ("\t").
+ */
+function trailingOWS(header, start, end) {
+    while (end > start) {
+        const char = header.charCodeAt(end - 1);
+        if (char !== SP && char !== HTAB)
+            break;
+        end--;
+    }
+    return end;
+}
+/**
+ * Serialize a parameter value.
+ */
+function qstring(str) {
+    if (TOKEN_REGEXP.test(str))
+        return str;
+    if (TEXT_REGEXP.test(str))
+        return `"${str.replace(QUOTE_REGEXP, "\\$&")}"`;
+    throw new TypeError(`Invalid parameter value: ${str}`);
+}
+//# sourceMappingURL=index.js.map
 
 /***/ })
 
@@ -33619,9 +33755,9 @@ class DecodedURL extends URL {
 }
 //# sourceMappingURL=proxy.js.map
 // EXTERNAL MODULE: ./node_modules/.pnpm/tunnel@0.0.6/node_modules/tunnel/index.js
-var node_modules_tunnel = __nccwpck_require__(329);
-// EXTERNAL MODULE: ./node_modules/.pnpm/undici@6.25.0/node_modules/undici/index.js
-var undici = __nccwpck_require__(9522);
+var node_modules_tunnel = __nccwpck_require__(1410);
+// EXTERNAL MODULE: ./node_modules/.pnpm/undici@6.27.0/node_modules/undici/index.js
+var undici = __nccwpck_require__(7253);
 ;// CONCATENATED MODULE: ./node_modules/.pnpm/@actions+http-client@4.0.1/node_modules/@actions/http-client/lib/index.js
 /* eslint-disable @typescript-eslint/no-explicit-any */
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -36351,7 +36487,7 @@ class Context {
 }
 //# sourceMappingURL=context.js.map
 // EXTERNAL MODULE: ./node_modules/.pnpm/@actions+http-client@3.0.2/node_modules/@actions/http-client/lib/index.js
-var lib = __nccwpck_require__(7708);
+var lib = __nccwpck_require__(4647);
 ;// CONCATENATED MODULE: ./node_modules/.pnpm/@actions+github@9.1.1/node_modules/@actions/github/lib/internal/utils.js
 var utils_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -36911,8 +37047,8 @@ function withDefaults(oldDefaults, newDefaults) {
 var endpoint = withDefaults(null, DEFAULTS);
 
 
-// EXTERNAL MODULE: ./node_modules/.pnpm/fast-content-type-parse@3.0.0/node_modules/fast-content-type-parse/index.js
-var fast_content_type_parse = __nccwpck_require__(975);
+// EXTERNAL MODULE: ./node_modules/.pnpm/content-type@2.0.0/node_modules/content-type/dist/index.js
+var dist = __nccwpck_require__(644);
 ;// CONCATENATED MODULE: ./node_modules/.pnpm/json-with-bigint@3.5.8/node_modules/json-with-bigint/json-with-bigint.js
 const intRegex = /^-?\d+$/;
 const noiseValue = /^-?\d+n+$/; // Noise - strings that match the custom format before being converted to it
@@ -37171,7 +37307,7 @@ class RequestError extends Error {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/@octokit+request@10.0.8/node_modules/@octokit/request/dist-bundle/index.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/@octokit+request@10.0.10/node_modules/@octokit/request/dist-bundle/index.js
 // pkg/dist-src/index.js
 
 
@@ -37179,7 +37315,7 @@ class RequestError extends Error {
 
 
 // pkg/dist-src/version.js
-var dist_bundle_VERSION = "10.0.8";
+var dist_bundle_VERSION = "10.0.10";
 
 // pkg/dist-src/defaults.js
 var defaults_default = {
@@ -37308,7 +37444,7 @@ async function getResponseData(response) {
   if (!contentType) {
     return response.text().catch(noop);
   }
-  const mimetype = (0,fast_content_type_parse/* safeParse */.xL)(contentType);
+  const mimetype = (0,dist/* parse */.qg)(contentType);
   if (isJSONResponse(mimetype)) {
     let text = "";
     try {
@@ -40614,7 +40750,7 @@ function getOctokit(token, options, ...additionalPlugins) {
 }
 //# sourceMappingURL=github.js.map
 // EXTERNAL MODULE: ./node_modules/.pnpm/bottleneck@2.19.5/node_modules/bottleneck/light.js
-var light = __nccwpck_require__(9900);
+var light = __nccwpck_require__(6297);
 ;// CONCATENATED MODULE: ./node_modules/.pnpm/@octokit+plugin-retry@8.1.0_@octokit+core@7.0.6/node_modules/@octokit/plugin-retry/dist-bundle/index.js
 // pkg/dist-src/version.js
 var plugin_retry_dist_bundle_VERSION = "0.0.0-development";
@@ -44013,7 +44149,7 @@ class DefaultGlobber {
 }
 //# sourceMappingURL=internal-globber.js.map
 // EXTERNAL MODULE: external "stream"
-var external_stream_ = __nccwpck_require__(2203);
+var external_stream_ = __nccwpck_require__(4584);
 // EXTERNAL MODULE: external "util"
 var external_util_ = __nccwpck_require__(9023);
 ;// CONCATENATED MODULE: ./node_modules/.pnpm/@actions+glob@0.7.0/node_modules/@actions/glob/lib/internal-hash-files.js
@@ -44140,7 +44276,7 @@ const external_node_fs_namespaceObject = require("node:fs");
 ;// CONCATENATED MODULE: external "node:path"
 const external_node_path_namespaceObject = require("node:path");
 // EXTERNAL MODULE: ./node_modules/.pnpm/xml-js@1.6.11/node_modules/xml-js/lib/index.js
-var xml_js_lib = __nccwpck_require__(8014);
+var xml_js_lib = __nccwpck_require__(6103);
 ;// CONCATENATED MODULE: ./lib/utils.js
 
 
