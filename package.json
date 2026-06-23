@@ -43,13 +43,13 @@
     "@eslint/eslintrc": "3.3.5",
     "@eslint/js": "10.0.1",
     "@octokit/fixtures": "23.1.2",
-    "@types/node": "25.8.0",
-    "@vercel/ncc": "0.38.4",
+    "@types/node": "26.0.0",
+    "@vercel/ncc": "0.44.0",
     "enzyme": "3.11.0",
-    "eslint": "10.3.0",
+    "eslint": "10.5.0",
     "globals": "17.6.0",
     "nock": "14.0.15",
     "typescript": "6.0.3",
-    "vitest": "4.1.8"
+    "vitest": "4.1.9"
   }
 }
