@@ -44505,7 +44505,7 @@ async function publishResults({ annotations, conclusion, createCheck, detailsUrl
         return { published: false };
     }
     const checkRun = checkRuns[0];
-    info(`Patching '${name}' check for ${link} (sha: ${headSha})`);
+    info(`Patching '${name}' check forsss ${link} (sha: ${headSha})`);
     const updateCheckRequest = {
         ...github_context.repo,
         check_run_id: checkRun.id,
