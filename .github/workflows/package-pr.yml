@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
     steps:
       - uses: actions/checkout@v6
         with:
@@ -56,3 +57,20 @@ jobs:
           git add dist/index.js
           git commit -m "chore: refresh packaged dist"
           git push origin "HEAD:${BRANCH_NAME}"
+      - name: Remove package-pr label
+        if: ${{ always() }}
+        uses: actions/github-script@v9
+        with:
+          #language=javascript
+          script: |
+            try {
+              await github.rest.issues.removeLabel({
+                ...context.repo,
+                issue_number: context.payload.pull_request.number,
+                name: 'package-pr'
+              });
+            } catch (error) {
+              if (error.status !== 404) {
+                throw error;
+              }
+            }
