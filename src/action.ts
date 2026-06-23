@@ -277,7 +277,7 @@ async function publishResults({
     }
 
     const checkRun = checkRuns[0];
-    core.info(`Patching '${name}' check for ${link} (sha: ${headSha})`);
+    core.info(`Patching '${name}' check forsss ${link} (sha: ${headSha})`);
     const updateCheckRequest = {
         ...github.context.repo,
         check_run_id: checkRun.id,
