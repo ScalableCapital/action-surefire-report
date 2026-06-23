@@ -65,6 +65,11 @@ const LABEL_DEFINITIONS = [
         description: 'Must be resolved before the next release can ship'
     },
     {
+        name: 'package-pr',
+        color: 'bfd4f2',
+        description: 'Command: run pnpm package for this PR and push the refreshed dist artifact'
+    },
+    {
         name: 'dependencies',
         color: '0366d6',
         description: 'Patch: dependency update'
