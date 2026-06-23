@@ -1,0 +1,77 @@
+name: package PR
+
+on:
+  pull_request:
+    types:
+      - labeled
+
+concurrency:
+  cancel-in-progress: true
+  group: package-pr-${{ github.event.pull_request.number }}
+
+jobs:
+  package_pr:
+    name: Package PR branch
+    if: ${{ github.event.label.name == 'package-pr' && github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: pnpm/action-setup@0e279bb959325dab635dd2c09392533439d90093 # v6.0.8
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: pnpm
+      - run: pnpm dlx @aikidosec/safe-chain@1.1.9 setup-ci
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run package
+      - name: Verify packaging only changed the bundled artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          unexpected_files="$(git diff --name-only -- . ':(exclude)dist/index.js')"
+          if [[ -n "${unexpected_files}" ]]; then
+            echo "::error::Packaging changed tracked files other than dist/index.js:"
+            echo "${unexpected_files}"
+            exit 1
+          fi
+      - name: Commit packaged dist when needed
+        shell: bash
+        env:
+          BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
+        run: |
+          set -euo pipefail
+
+          if git -c core.autocrlf=false diff --ignore-cr-at-eol --quiet -- dist/index.js; then
+            echo "dist/index.js already matches pnpm run package output."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dist/index.js
+          git commit -m "chore: refresh packaged dist"
+          git push origin "HEAD:${BRANCH_NAME}"
+      - name: Remove package-pr label
+        if: ${{ always() }}
+        uses: actions/github-script@v9
+        with:
+          #language=javascript
+          script: |
+            try {
+              await github.rest.issues.removeLabel({
+                ...context.repo,
+                issue_number: context.payload.pull_request.number,
+                name: 'package-pr'
+              });
+            } catch (error) {
+              if (error.status !== 404) {
+                throw error;
+              }
+            }

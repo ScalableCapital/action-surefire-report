@@ -52,6 +52,8 @@ The release-label workflow tries to apply labels automatically. It fails only if
 
 The repository intentionally does not use body-content issue labeling. Issue forms plus a default `triage` label keep incoming issue state predictable and avoid overfitting labels to partial text matches.
 
+Maintainers can add the `package-pr` label to a same-repository pull request to run `pnpm run package` in CI and push a refreshed committed `dist/index.js` back to the PR branch. This label is command-style automation, not a release/changelog label.
+
 ## Issue Intake and Triage
 
 New issues should come through the GitHub issue forms for:
