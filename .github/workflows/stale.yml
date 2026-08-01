@@ -19,7 +19,7 @@ jobs:
     name: Stale policy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/stale@v10
+      - uses: actions/stale@v11
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           enable-statistics: true
