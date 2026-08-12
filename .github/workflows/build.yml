@@ -233,7 +233,7 @@ jobs:
           cache: pnpm
       - run: pnpm dlx @aikidosec/safe-chain@1.1.9 setup-ci
       - run: pnpm install --frozen-lockfile
-      - uses: actions/setup-go@v6
+      - uses: actions/setup-go@v7
         with:
           go-version: 1.21.x
       - name: Run failing Go example
