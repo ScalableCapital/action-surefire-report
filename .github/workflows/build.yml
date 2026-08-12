@@ -173,7 +173,7 @@ jobs:
           cache: pnpm
       - run: pnpm dlx @aikidosec/safe-chain@1.1.9 setup-ci
       - run: pnpm install --frozen-lockfile
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.x'
       - run: python -m pip install pytest
