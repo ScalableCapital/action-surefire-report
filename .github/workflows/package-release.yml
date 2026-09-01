@@ -35,7 +35,7 @@ jobs:
           echo "major=${BASH_REMATCH[1]}" >> "${GITHUB_OUTPUT}"
           echo "minor=${BASH_REMATCH[2]}" >> "${GITHUB_OUTPUT}"
       - uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
           cache: pnpm
