@@ -50,7 +50,7 @@
     "globals": "17.9.0",
     "nock": "14.0.17",
     "typescript": "7.0.2",
-    "vitest": "4.1.10"
+    "vitest": "4.1.11"
   },
   "pnpm": {
     "overrides": {
